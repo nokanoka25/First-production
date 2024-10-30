@@ -71,3 +71,6 @@ MVPリリース時
 　　　Invitationモデルを作成し、ランダムなトークンを生成しユニークなリンクを生成します。
   ・LINE招待機能
   　　LINE Messaging APIを使用し、LINEで招待URLを送付します。
+
+■ 画面遷移図
+Figma：https://www.figma.com/design/D20fnYzweSKw3OZijDRLn2/Camplan-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&node-type=canvas&t=7CeuCRKE9tRxBiIe-0
