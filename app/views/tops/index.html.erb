@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Tops" %>
+
+<h1>Tops</h1>
+
+<div id="tops">
+  <% @tops.each do |top| %>
+    <%= render top %>
+    <p>
+      <%= link_to "Show this top", top %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New top", new_top_path %>

@@ -24,7 +24,7 @@
   
 
 ■ ユーザーの獲得について
-SEO対策とXでの発信を考えています。
+ SEO対策とXでの発信を考えています。
 
 ■ サービスの差別化ポイント・推しポイント
 類似サービス
@@ -37,7 +37,7 @@ SEO対策とXでの発信を考えています。
    　荷物を把握することで、余分な荷物を省いたり、足りないギアを買い足したりすることができ、キャンプ場の広さや車の台数を考慮して
     キャンプ場選びを円滑に進めることができるので、当日のトラブルを減らすことができます。
 ■ 機能候補
-MVPリリース時
+ MVPリリース時
 ・ユーザー登録機能
 　　ユーザー名・パスワード・メールアドレスでユーザー登録します。
 ・マイページ機能
@@ -72,8 +72,6 @@ MVPリリース時
   ・LINE招待機能
   　　LINE Messaging APIを使用し、LINEで招待URLを送付します。
 
-■ 画面遷移図
-Figma：https://www.figma.com/design/D20fnYzweSKw3OZijDRLn2/Camplan-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&node-type=canvas&t=7CeuCRKE9tRxBiIe-0
+■ 画面遷移図 Figma：https://www.figma.com/design/D20fnYzweSKw3OZijDRLn2/Camplan-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&node-type=canvas&t=7CeuCRKE9tRxBiIe-0
 
-■ ER図
-drawio:https://app.diagrams.net/#G1KjVe_YxvBydcmaNCIEBmynpB9-EmH7Ba#%7B%22pageId%22%3A%22Ws8fdge7SCt0M14triZR%22%7D
+■ ER図 drawio:https://app.diagrams.net/#G1KjVe_YxvBydcmaNCIEBmynpB9-EmH7Ba#%7B%22pageId%22%3A%22Ws8fdge7SCt0M14triZR%22%7D
