@@ -1,16 +1,21 @@
-<p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Tops" %>
+  <header class="text-center">
+    <h1>Camplan</h1>
+  </header>
 
-<h1>Tops</h1>
+#path変更する
+  <div class="d-flex justify-content-end">
+    <%= link_to "login", new_top_path, class: "me-3" %>
+    <%= link_to "sigh in", new_top_path %>
+  </div>
 
-<div id="tops">
-  <% @tops.each do |top| %>
-    <%= render top %>
-    <p>
-      <%= link_to "Show this top", top %>
-    </p>
-  <% end %>
-</div>
 
-<%= link_to "New top", new_top_path %>
+
+
+  <body>
+    <div class="mt-5">
+      <h2>キャンプ計画サイト</h2>
+      <p>キャンプ計画をサポートし楽しいキャンプへ</p>
+    </div>
+  </body>
+  
