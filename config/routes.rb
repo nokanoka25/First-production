@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :tops
-
+  resources :users, only: %i[new create]
+  get 'login' => 'user_sessions#new', :as => :login
+  post 'login' => "user_sessions#create"
+  post 'logout' => 'user_sessions#destroy', :as => :logout
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
