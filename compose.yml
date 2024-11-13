@@ -14,6 +14,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 30s
+
   web:
     build:
       context: .
@@ -27,11 +28,13 @@ services:
       - node_modules:/myapp/node_modules
     environment:
       TZ: Asia/Tokyo
+      DATABASE_URL: mysql://ad31j2tua6753k3m:rrb4x3uv54fzxda3@e11wl4mksauxgu1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/oog78eshaqb
     ports:
       - "3000:3000"
     depends_on:
       db:
         condition: service_healthy
+
 volumes:
   mysql_data:
   bundle_data:
