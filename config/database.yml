@@ -50,4 +50,7 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] || 'mysql://ad31j2tua6753k3m:rrb4x3uv54fzxda3@e11wl4mksauxgu1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/oog78eshaqb' %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
