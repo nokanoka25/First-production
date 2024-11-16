@@ -28,7 +28,7 @@ services:
       - node_modules:/myapp/node_modules
     environment:
       TZ: Asia/Tokyo
-      DATABASE_URL: mysql://ad31j2tua6753k3m:rrb4x3uv54fzxda3@e11wl4mksauxgu1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/oog78eshaqb
+      DATABASE_URL: mysql2://ad31j2tua6753k3m:rrb4x3uv54fzxda3@e11wl4mksauxgu1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/oog78eshaqb6ybdk
     ports:
       - "3000:3000"
     depends_on:

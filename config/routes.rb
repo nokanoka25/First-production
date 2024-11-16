@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :tops
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create show]
+  resources :groups, only: %i[index]
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => "user_sessions#create"
   post 'logout' => 'user_sessions#destroy', :as => :logout
