@@ -2,3 +2,21 @@
 <h1>Mypage</h1>
 <%= @name %>
 <%= link_to "Logout", :logout, class: "me-3" %>
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="account-tab" data-bs-toggle="tab" data-bs-target="#account-tab-pane" type="button" role="tab" aria-controls="account-tab-pane" aria-selected="true">アカウント</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="gear-tab" data-bs-toggle="tab" data-bs-target="#gear-tab-pane" type="button" role="tab" aria-controls="gear-tab-pane" aria-selected="false">キャンプギア</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="group-tab" data-bs-toggle="tab" data-bs-target="#group-tab-pane" type="button" role="tab" aria-controls="group-tab-pane" aria-selected="false">グループ</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="account-tab-pane" role="tabpanel" aria-labelledby="account-tab" tabindex="0"><%= render "account" %></div>
+  <div class="tab-pane fade" id="gear-tab-pane" role="tabpanel" aria-labelledby="gear-tab" tabindex="0"><%= render "gear" %></div>
+  <div class="tab-pane fade" id="group-tab-pane" role="tabpanel" aria-labelledby="group-tab" tabindex="0"><%= render "group" %></div>
+</div>

@@ -1,1 +1,35 @@
 <h1>グループページ</h1>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="information-tab" data-bs-toggle="tab" data-bs-target="#information-tab-pane" type="button" role="tab" aria-controls="information-tab-pane" aria-selected="true">基本情報</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="chat-tab" data-bs-toggle="tab" data-bs-target="#chat-tab-pane" type="button" role="tab" aria-controls="chat-tab-pane" aria-selected="false">チャット</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="vote-tab" data-bs-toggle="tab" data-bs-target="#vote-tab-pane" type="button" role="tab" aria-controls="vote-tab-pane" aria-selected="false">キャンプ場投票</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="belongings-tab" data-bs-toggle="tab" data-bs-target="#belongings-tab-pane" type="button" role="tab" aria-controls="belongings-tab-pane" aria-selected="false">持ち物一覧</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="mygears-tab" data-bs-toggle="tab" data-bs-target="#mygears-tab-pane" type="button" role="tab" aria-controls="mygears-tab-pane" aria-selected="false">Mygears</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="event-tab" data-bs-toggle="tab" data-bs-target="#event-tab-pane" type="button" role="tab" aria-controls="event-tab-pane" aria-selected="false">予定・イベント</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="admin-tab" data-bs-toggle="tab" data-bs-target="#admin-tab-pane" type="button" role="tab" aria-controls="admin-tab-pane" aria-selected="false">グループ管理</button>
+  </li>
+ 
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="information-tab-pane" role="tabpanel" aria-labelledby="information-tab" tabindex="0"><%= render "information" %></div></div>
+  <div class="tab-pane fade" id="chat-tab-pane" role="tabpanel" aria-labelledby="chat-tab" tabindex="0"><%= render "chat" %></div></div>
+  <div class="tab-pane fade" id="vote-tab-pane" role="tabpanel" aria-labelledby="vote-tab" tabindex="0"><%= render "vote" %></div></div>
+  <div class="tab-pane fade" id="belongings-tab-pane" role="tabpanel" aria-labelledby="belongings-tab" tabindex="0"><%= render "belongings" %></div></div>
+  <div class="tab-pane fade" id="mygears-tab-pane" role="tabpanel" aria-labelledby="mygears-tab" tabindex="0"><%= render "mygears" %></div></div>
+  <div class="tab-pane fade" id="event-tab-pane" role="tabpanel" aria-labelledby="event-tab" tabindex="0"><%= render "event" %></div></div>
+  <div class="tab-pane fade" id="admin-tab-pane" role="tabpanel" aria-labelledby="admin-tab" tabindex="0"><%= render "admin" %></div></div>
+</div>
