@@ -1,0 +1,9 @@
+<%= form_with model: @user, url: user_path, method: :put do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.submit '更新' %>
+  </div>
+<% end %>

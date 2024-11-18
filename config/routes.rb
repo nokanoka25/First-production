@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :tops
-  resources :users, only: %i[new create show]
+  resources :users, only: %i[new create show edit update]
   resources :groups, only: %i[index]
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => "user_sessions#create"
