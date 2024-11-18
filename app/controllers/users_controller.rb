@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     user = User.find(params[:id])
     @name = user.name
+    @email = user.email
   end
 
   def new
