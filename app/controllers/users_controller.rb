@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     @name = user.name
     @email = user.email
+    @gears = Gear.all
   end
 
   def new
