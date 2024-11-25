@@ -1,11 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :show]
 
  
   def show
-    user = User.find(params[:id])
-    @name = user.name
-    @email = user.email
     @gears = Gear.all
   end
 
@@ -31,6 +28,8 @@ class UsersController < ApplicationController
   end
 
   def edit; end
+
+  
   
   private
 

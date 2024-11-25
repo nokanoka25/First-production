@@ -1,20 +1,16 @@
 <h1>キャンプギア一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>種類</th>
-      <th>名前</th>
-      <th>設置面積</th>
-    </tr>
-  </thead>
-  <tbody>
+  <ul>
     <% @gears.each do |gear| %>
-      <tr>
-        <td><%= gear.gear_type.humanize %></td>
-        <td><%= gear.name %></td>
-        <td><%= "#{gear.length}×#{gear.width}" if gear.length && gear.width %></td>
-      </tr>
+      <li>
+        <%= gear.gear_type %>
+        <%= gear.name %>
+        <%= gear.length %>
+        <%= gear.width %>
+        <%= link_to '編集', edit_gear_path(gear) %>
+        <%= link_to '削除', gear, data: { turbo_method: :delete} %>
+
+      </li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+    <%= link_to 'キャンプギア登録', new_gear_path %>

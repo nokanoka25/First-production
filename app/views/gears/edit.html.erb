@@ -1,0 +1,25 @@
+<h1>キャンプギアの編集</h1>
+<%= form_with model: @gear, local: true do |f| %>
+    <div class='mb-3'>
+      <%= f.label :gear_type, 'ギアの種類', class: 'form-select' %>
+      <%= f.select :gear_type, [["テント", "テント"], ["タープ", "タープ"], ["チェア", "チェア"], ["シュラフ", "シュラフ"], ["エアマット", "エアマット"]\
+      ,["ランタン", "ランタン"], ["その他", "その他"]], include_blank: "選択して下さい" %>
+    </div>
+  
+    <div class='mb-3'>
+      <%= f.label :name, 'ギアの名前' %>
+      <%= f.text_field :name, class: 'form-control', placeholder: "例: テントA" %>
+    </div>
+  
+    <div class='mb-3'>
+      <%= f.label :length, '設置面積縦' %>
+      <%= f.number_field :length, step: 1, class: 'form-control', placeholder: "例: 1000" %>
+    </div>
+  
+    <div class='mb-3'>
+      <%= f.label :width, '設置面積横' %>
+      <%= f.number_field :width, step: 1, class: 'form-control', placeholder: "例: 500" %>
+    </div>
+  
+    <%= f.submit '保存', class: 'btn btn-primary' %>
+  <% end %>
