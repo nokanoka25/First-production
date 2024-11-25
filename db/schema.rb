@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_20_121649) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_23_095502) do
   create_table "gears", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "gear_type"
     t.string "name"
     t.integer "length"
     t.integer "width"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "gear_type", null: false
   end
 
   create_table "tops", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -35,4 +35,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_20_121649) do
     t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
+
+  create_table "users_gears", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "gear_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gear_id"], name: "index_users_gears_on_gear_id"
+    t.index ["user_id", "gear_id"], name: "index_users_gears_on_user_id_and_gear_id", unique: true
+    t.index ["user_id"], name: "index_users_gears_on_user_id"
+  end
+
+  add_foreign_key "users_gears", "gears"
+  add_foreign_key "users_gears", "users"
 end

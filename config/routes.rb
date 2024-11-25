@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   resources :tops
-  resources :users, only: %i[new create show edit update]
+  resources :users, only: %i[new create show edit update destroy]
   resources :groups, only: %i[index]
-  resources :gears
+  resources :gears, only: %i[new index create edit destroy]
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => "user_sessions#create"
   get 'logout' => 'user_sessions#destroy', :as => :logout
+  delete 'gears/:id' => 'gears#destroy'
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

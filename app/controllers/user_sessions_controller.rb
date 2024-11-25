@@ -2,7 +2,7 @@ class UserSessionsController < ApplicationController
  
   
   def create
-    @user = login(params[:email], params[:password],)
+    @user = login(params[:email], params[:password])
 
     if @user
       redirect_to user_path(id: current_user), notice: 'ログインに成功しました'

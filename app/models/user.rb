@@ -6,4 +6,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   validates :email, uniqueness: true
+  has_many :users_gears, dependent: :destroy
+  has_many :gears, through: :users_gears
+
 end
