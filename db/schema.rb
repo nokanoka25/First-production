@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_26_114239) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_28_140153) do
   create_table "gears", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.integer "length"
@@ -24,6 +24,21 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_26_114239) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "information", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.date "start_day"
+    t.date "finish_day"
+    t.string "camp_site_name"
+    t.string "camp_site_address"
+    t.string "camp_site_url"
+    t.integer "car"
+    t.string "start_point"
+    t.datetime "check_in"
+    t.datetime "check_out"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "group_id"
   end
 
   create_table "tops", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
