@@ -1,4 +1,4 @@
-<h1>グループページ</h1>
+<h1><%= "#{@group.name}のグループページ" %></h1>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
@@ -25,7 +25,7 @@
  
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="information-tab-pane" role="tabpanel" aria-labelledby="information-tab" tabindex="0"><%= render "information" %></div></div>
+  <div class="tab-pane fade show active" id="information-tab-pane" role="tabpanel" aria-labelledby="information-tab" tabindex="0"><%= render template: "informations/index", information: @information %></div></div>
   <div class="tab-pane fade" id="chat-tab-pane" role="tabpanel" aria-labelledby="chat-tab" tabindex="0"><%= render "chat" %></div></div>
   <div class="tab-pane fade" id="vote-tab-pane" role="tabpanel" aria-labelledby="vote-tab" tabindex="0"><%= render "vote" %></div></div>
   <div class="tab-pane fade" id="belongings-tab-pane" role="tabpanel" aria-labelledby="belongings-tab" tabindex="0"><%= render "belongings" %></div></div>
