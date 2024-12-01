@@ -88,4 +88,10 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  # Actioncableの送信元リクエストの許可。アプリ名が入っているリクエストのみ許可する設定
+  config.action_cable.allowed_request_origins = [
+  %r{https?://.*boiling-forest-06110-26ed33e0d459.*} 
+]
+
+config.action_cable.worker_pool_size = 4
 end
