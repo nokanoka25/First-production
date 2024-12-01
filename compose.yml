@@ -7,7 +7,7 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
     ports:
-      - 3307:3306
+      - "3307:3306"
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -uroot -ppassword
       interval: 10s
@@ -15,10 +15,20 @@ services:
       retries: 3
       start_period: 30s
 
+  redis:
+    container_name: redis
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
   web:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    container_name: web
     command: bash -c "bundle install && bundle exec rails db:prepare && rm -f tmp/pids/server.pid && ./bin/dev"
     tty: true
     stdin_open: true
@@ -29,13 +39,17 @@ services:
     environment:
       TZ: Asia/Tokyo
       DATABASE_URL: mysql2://ad31j2tua6753k3m:rrb4x3uv54fzxda3@e11wl4mksauxgu1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/oog78eshaqb6ybdk
+      REDIS_URL: redis://redis:6379/0
     ports:
       - "3000:3000"
     depends_on:
       db:
         condition: service_healthy
+      redis:
+        condition: service_started
 
 volumes:
   mysql_data:
+  redis_data:
   bundle_data:
   node_modules:
