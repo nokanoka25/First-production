@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "rooms/show"
   resources :tops
   resources :users, only: %i[new create show edit update destroy]
   resources :gears, only: %i[new index create edit update destroy]
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   post 'login' => "user_sessions#create"
   get 'logout' => 'user_sessions#destroy', :as => :logout
   delete 'gears/:id' => 'gears#destroy'
+  mount ActionCable.server => '/cable'
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
