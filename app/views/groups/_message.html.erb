@@ -1,0 +1,9 @@
+<h1>Chat Room</h1>
+<div class="messages-container">
+  <div class="messages" id="messages">
+    <% @messages.each do |message| %>
+      <p><%= message.content %></p>
+    <% end %>
+  </div>
+  <textarea id="message-input" data-behavior="group_speaker" placeholder="Type your message here..."></textarea>
+</div>

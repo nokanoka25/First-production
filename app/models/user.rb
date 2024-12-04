@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   has_many :users_gears, dependent: :destroy
   has_many :gears, through: :users_gears
-  has_many :groups, through: :users_groups
-  has_many :users_groups, dependent: :destroy  
+  has_many :groups, through: :messages
+  has_many :messages, dependent: :destroy  
 
 end

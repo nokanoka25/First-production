@@ -20,6 +20,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @information = @group.information
+    @messages = @group.messages
   end
 
   private
