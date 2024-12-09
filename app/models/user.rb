@@ -10,5 +10,6 @@ class User < ApplicationRecord
   has_many :gears, through: :users_gears
   has_many :groups, through: :messages
   has_many :messages, dependent: :destroy  
+  has_many :votes, dependent: :destroy
 
 end
