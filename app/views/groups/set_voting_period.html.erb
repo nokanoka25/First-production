@@ -1,0 +1,16 @@
+<h2>投票期間を設定</h2>
+<%= form_with(model: @group, url: update_voting_period_group_path(@group), method: :patch, local: true) do |f| %>
+  <div>
+    <%= f.label :voting_start_at, "投票開始日時" %>
+    <%= f.datetime_select :voting_start_at, required: true %>
+  </div>
+
+  <div>
+    <%= f.label :voting_end_at, "投票終了日時" %>
+    <%= f.datetime_select :voting_end_at, required: true %>
+  </div>
+
+  <div>
+    <%= f.submit "投票期間を設定", class: "btn btn-primary" %>
+  </div>
+<% end %>

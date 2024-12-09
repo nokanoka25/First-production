@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_05_215306) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_09_170954) do
   create_table "gears", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.integer "length"
@@ -24,6 +24,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_05_215306) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "voting_start_at"
+    t.datetime "voting_end_at"
+    t.integer "top_voted_post_id"
   end
 
   create_table "information", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
