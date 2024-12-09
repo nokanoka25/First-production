@@ -22,6 +22,7 @@ class GroupsController < ApplicationController
     @information = @group.information
     @messages = @group.messages
     @post = @group.posts
+    
   end
 
   private

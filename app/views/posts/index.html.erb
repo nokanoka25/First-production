@@ -5,11 +5,19 @@
     <p>候補地住所: <%= post.camp_site_address %></p>
     <p>候補地URL: <%= post.camp_site_url %></p>
     <p>アピールポイント: <%= post.text %></p>
+    <p>投票数: <%= post.votes.count %></p> <!-- 投票数の表示 -->
+    
+    <% if post.votes.exists?(user: current_user) %>
+      <!-- 投票済みの場合 -->
+      <%= button_to '投票を取り消す', group_post_vote_path(@group, post, post.votes.find_by(user: current_user)), method: :delete, class: "btn btn-danger" %>
+    <% else %>
+      <!-- 未投票の場合 -->
+      <%= button_to '投票する', group_post_votes_path(@group, post), method: :post, class: "btn btn-primary" %>
+    <% end %>
     <hr>
   <% end %>
 <% else %>
   <p>候補地はまだありません。</p>
 <% end %>
 
-
-<%= link_to '登録', new_group_post_path(@group) %>
+<%= link_to '登録', new_group_post_path(@group), class: "btn btn-success" %>
