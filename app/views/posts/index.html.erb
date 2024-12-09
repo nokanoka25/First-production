@@ -1,0 +1,15 @@
+<h3>候補地一覧</h3>
+<% if @post.present? %>
+  <% @post.each do |post| %>
+    <p>キャンプ場名: <%= post.camp_site_name %></p>
+    <p>候補地住所: <%= post.camp_site_address %></p>
+    <p>候補地URL: <%= post.camp_site_url %></p>
+    <p>アピールポイント: <%= post.text %></p>
+    <hr>
+  <% end %>
+<% else %>
+  <p>候補地はまだありません。</p>
+<% end %>
+
+
+<%= link_to '登録', new_group_post_path(@group) %>

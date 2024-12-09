@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :gears, only: %i[new index create edit update destroy]
   resources :groups, only: %i[new create index show] do
     resources :informations, only: %i[new create index edit update]
+    resources :posts, only: %i[new index create]
   end
   
   get 'login' => 'user_sessions#new', :as => :login

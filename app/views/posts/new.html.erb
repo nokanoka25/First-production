@@ -1,0 +1,23 @@
+<%= form_with model: @post, url: group_posts_path do |f| %>
+  <div class='mb-3'>
+    <%= f.label :camp_site_name, 'キャンプ場名' %>
+    <%= f.text_field :camp_site_name, class: 'form-control' %>
+  </div>
+
+  <div class='mb-3'>
+    <%= f.label :camp_site_address, 'キャンプ場住所' %>
+    <%= f.text_field :camp_site_address, class: 'form-control' %>
+  </div>
+  
+  <div class='mb-3'>
+    <%= f.label :camp_site_url, '候補地URL' %>
+    <%= f.text_field :camp_site_url, class: 'form-control' %>
+  </div>
+
+  <div class='mb-3'>
+    <%= f.label :text, 'アピールポイント' %>
+    <%= f.text_field :text, class: 'form-control' %>
+  </div>
+  
+    <%= f.submit '保存', class: 'btn btn-primary' %>
+<% end %>
