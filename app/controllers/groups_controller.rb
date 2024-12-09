@@ -22,8 +22,23 @@ class GroupsController < ApplicationController
     @information = @group.information
     @messages = @group.messages
     @post = @group.posts
+    @top_voted_post = @group.top_voted_post
     
   end
+
+  def set_voting_period
+    @group = Group.find(params[:id])
+  end
+
+  def update_voting_period
+    @group = Group.find(params[:id])
+    if @group.update(voting_period_params)
+      redirect_to @group, notice: '投票期間を設定しました。'
+    else
+      render :set_voting_period
+    end
+  end
+
 
   private
 
@@ -37,6 +52,10 @@ class GroupsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:camp_site_name, :camp_site_address, :camp_site_url, :text, :group_id)
+  end
+
+  def voting_period_params
+    params.require(:group).permit(:voting_start_at, :voting_end_at)
   end
   
 end

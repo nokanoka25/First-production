@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :posts, only: %i[new index create] do
       resources :votes, only: [:create, :destroy]
     end
+    member do
+      get :set_voting_period
+      patch :update_voting_period
+    end
   end
   
   get 'login' => 'user_sessions#new', :as => :login
