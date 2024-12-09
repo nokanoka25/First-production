@@ -1,1 +1,7 @@
 <p>投票ページ</p>
+<% if @group.selected_post_id.present? %>
+  <h2>選ばれたキャンプ場: <%= @group.selected_post.title %></h2>
+  <p><%= @group.selected_post.description %></p>
+<% else %>
+  <p>まだ結果は確定していません。</p>
+<% end %>

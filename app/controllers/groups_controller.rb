@@ -21,6 +21,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @information = @group.information
     @messages = @group.messages
+    @post = @group.posts
   end
 
   private
@@ -31,6 +32,10 @@ class GroupsController < ApplicationController
 
   def information_params
     params.require(:information).permit(:start_day, :finish_day, :camp_site_name, :camp_site_address, :camp_site_url, :car, :start_point, :check_in, :check_out, :group_id)
+  end
+
+  def post_params
+    params.require(:post).permit(:camp_site_name, :camp_site_address, :camp_site_url, :text, :group_id)
   end
   
 end

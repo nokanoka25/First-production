@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_02_090457) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_05_215306) do
   create_table "gears", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.integer "length"
@@ -51,6 +51,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_02_090457) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "camp_site_name"
+    t.string "camp_site_address"
+    t.string "camp_site_url"
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_posts_on_group_id"
+  end
+
   create_table "tops", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -77,8 +88,20 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_02_090457) do
     t.index ["user_id"], name: "index_users_gears_on_user_id"
   end
 
+  create_table "votes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_votes_on_post_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
   add_foreign_key "messages", "groups"
   add_foreign_key "messages", "users"
+  add_foreign_key "posts", "groups"
   add_foreign_key "users_gears", "gears"
   add_foreign_key "users_gears", "users"
+  add_foreign_key "votes", "posts"
+  add_foreign_key "votes", "users"
 end
