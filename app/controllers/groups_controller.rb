@@ -33,12 +33,13 @@ class GroupsController < ApplicationController
   def update_voting_period
     @group = Group.find(params[:id])
     if @group.update(voting_period_params)
+      # ジョブをスケジュール
+      @group.schedule_voting_result_job
       redirect_to @group, notice: '投票期間を設定しました。'
     else
       render :set_voting_period
     end
   end
-
 
   private
 
@@ -57,5 +58,4 @@ class GroupsController < ApplicationController
   def voting_period_params
     params.require(:group).permit(:voting_start_at, :voting_end_at)
   end
-  
 end

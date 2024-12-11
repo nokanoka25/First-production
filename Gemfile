@@ -3,6 +3,7 @@ source "https://rubygems.org"
 ruby "3.2.3"
 gem 'sorcery'
 gem 'redis'
+gem 'sidekiq', require: 'sidekiq/web'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.0"

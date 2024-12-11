@@ -74,4 +74,9 @@ Rails.application.configure do
   config.action_cable.disable_request_forgery_protection = true
 
   config.action_cable.worker_pool_size = 4
+
+  #sidekiq実装時にRailsのwebコンソールからリモートアクセスを拒否されているので許可する
+  config.web_console.whitelisted_ips = '192.168.65.0/24'
+
+  config.log_level = :debug
 end
