@@ -1,4 +1,11 @@
+require 'sidekiq/web'
+
+Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+  username == 'admin' && password == 'password'
+end
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
   get "rooms/show"
   resources :tops
   resources :users, only: %i[new create show edit update destroy]

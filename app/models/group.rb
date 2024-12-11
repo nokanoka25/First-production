@@ -1,6 +1,4 @@
 class Group < ApplicationRecord
-  after_update :schedule_voting_result_job, if: :voting_end_at_changed?
-
   has_many :messages
   has_many :users, through: :messages
 
@@ -23,18 +21,24 @@ class Group < ApplicationRecord
     update(top_voted_post: top_post)
   end
 
-  private
-
   def voting_dates_are_valid
     if voting_start_at.present? && voting_end_at.present? && voting_start_at >= voting_end_at
       errors.add(:voting_end_at, "は開始日時より後に設定してください")
     end
   end
 
+  # 
   def schedule_voting_result_job
-    return unless voting_end_at.present?
+    Rails.logger.info "Debug: schedule_voting_result_job triggered for Group ID #{id}"
+    if saved_change_to_voting_end_at?
+      Rails.logger.info "Debug: voting_end_at was changed for Group ID #{id}"
+    else
+      Rails.logger.info "Debug: voting_end_at was NOT changed for Group ID #{id}"
+    end
 
+    return unless voting_end_at.present?
+    utc_time = voting_end_at.utc
+    Rails.logger.info "Debug: Scheduling UpdateVotingResultsJob for Group ID #{id} at #{utc_time} (UTC)"
     UpdateVotingResultsJob.set(wait_until: voting_end_at).perform_later(id)
   end
 end
-

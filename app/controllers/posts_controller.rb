@@ -3,7 +3,6 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
       @group = Group.find(params[:group_id]) # グループIDで取得
       @posts = @group.posts # グループに紐づく投稿を取得
-      @top_voted_post = @group.top_voted_post
     end
 
     def new
@@ -20,10 +19,14 @@ class PostsController < ApplicationController
         render 'new'
       end
     end
+
+    
   
     private
   
     def post_params
       params.require(:post).permit(:camp_site_name, :camp_site_address, :camp_site_url, :text, :group_id)
     end
+
+    
   end
