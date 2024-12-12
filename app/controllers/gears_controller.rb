@@ -7,12 +7,12 @@ class GearsController < ApplicationController
   end
 
   def create
-    @gear = Gear.new(gear_params)
-    if @gear.save
-      redirect_to user_path(current_user), notice: 'キャンプギアを登録しました。'
-    else
-      render :new
-    end
+    # ギアを新規作成
+    @gear = Gear.find_or_create_by(gear_params)
+    # 中間テーブルにデータを保存
+    UsersGear.create(user: current_user, gear: @gear)
+
+    redirect_to user_path(current_user), notice: 'キャンプギアを登録しました。'
   end
   
   def edit

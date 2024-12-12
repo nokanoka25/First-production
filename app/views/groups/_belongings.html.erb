@@ -1,1 +1,22 @@
-<p>持ち物一覧</p>
+<h1><%= @group.name %> の持ち物一覧</h1>
+
+<table>
+<h2>タープとテントの総設置面積</h2>
+<p><%= @total_area %> m²</p>
+  <thead>
+    <tr>
+      <th>ギアの名前</th>
+      <th>所有者</th>
+      <th>サイズ (m²)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @gears.each do |gear| %>
+      <tr>
+        <td><%= gear.name %></td>
+        <td><%= gear.users.map(&:name).join(", ") %></td>
+        <td><%= gear.length * gear.width %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
