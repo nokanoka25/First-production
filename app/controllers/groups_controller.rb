@@ -23,7 +23,17 @@ class GroupsController < ApplicationController
     @messages = @group.messages
     @post = @group.posts
     @top_voted_post = @group.top_voted_post
+      
+    # グループの全メンバー
+    group_users = @group.users
+      
+    @gears = Gear.joins(users: :messages)
+                 .where(messages: { group_id: @group.id })
+                 .distinct
     
+    @total_area = Gear.joins(users: :messages)
+                      .where(messages: { group_id: @group.id }, gear_type: ['タープ', 'テント'])
+                      .sum('gears.length * gears.width')
   end
 
   def set_voting_period
