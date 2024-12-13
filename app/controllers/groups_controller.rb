@@ -23,6 +23,7 @@ class GroupsController < ApplicationController
     @messages = @group.messages
     @post = @group.posts
     @top_voted_post = @group.top_voted_post
+    @schedules = @group.schedules.order(scheduled_at: :asc) # 日時順に並べる
 
     # グループ全体の MyGear を取得
     @group_my_gears = MyGear.includes(:gear, :user).where(group: @group)

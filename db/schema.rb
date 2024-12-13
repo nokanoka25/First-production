@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_12_175116) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_13_024634) do
   create_table "gears", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.integer "length"
@@ -76,6 +76,15 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_12_175116) do
     t.index ["group_id"], name: "index_posts_on_group_id"
   end
 
+  create_table "schedules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.datetime "scheduled_at"
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_schedules_on_group_id"
+  end
+
   create_table "tops", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -117,6 +126,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_12_175116) do
   add_foreign_key "my_gears", "groups"
   add_foreign_key "my_gears", "users"
   add_foreign_key "posts", "groups"
+  add_foreign_key "schedules", "groups"
   add_foreign_key "users_gears", "gears"
   add_foreign_key "users_gears", "users"
   add_foreign_key "votes", "posts"

@@ -1,0 +1,17 @@
+<h1>予定を編集</h1>
+
+<%= form_with model: [@group, @schedule], local: true do |form| %>
+  <div>
+    <%= form.label :name, '予定名' %>
+    <%= form.text_field :name, value: @schedule.name %>
+  </div>
+  
+  <div>
+    <%= form.label :scheduled_at, '予定日時' %>
+    <%= form.datetime_select :scheduled_at, default: @schedule.scheduled_at %>
+  </div>
+  
+  <div>
+    <%= form.submit '更新' %>
+  </div>
+<% end %>

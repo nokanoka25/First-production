@@ -10,6 +10,7 @@ class Group < ApplicationRecord
   validates :voting_end_at, presence: true
   validate :voting_dates_are_valid
   has_many :my_gears
+  has_many :schedules, dependent: :destroy
 
   def voting_active?
     return false if voting_start_at.nil? || voting_end_at.nil?

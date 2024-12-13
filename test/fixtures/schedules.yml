@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  scheduled_at: 2024-12-13 11:46:34
+  group: one
+
+two:
+  name: MyString
+  scheduled_at: 2024-12-13 11:46:34
+  group: two
