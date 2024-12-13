@@ -1,0 +1,33 @@
+
+<table>
+  <thead>
+  <%= button_to 'MyGearを初期化', initialize_my_gears_group_path(@group),data: { turbo_method: :post} %>
+
+  <p>MyGears Count: <%= @group_my_gears.count %></p>
+    <tr>
+      <th>ギア名</th>
+      <th>所有者</th>
+      <th>種類</th>
+      <th>縦</th>
+      <th>横</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @group_my_gears.each do |users_gear| %>
+      <tr>
+        <td><%= users_gear.gear.name %></td>
+        <td><%= users_gear.user.name %></td>
+        <td><%= users_gear.gear.gear_type %></td>
+        <td><%= users_gear.gear.length %></td>
+        <td><%= users_gear.gear.width %></td>
+        
+        <td>
+        <p>Gear ID: <%= users_gear.gear_id %></p>
+          <% if users_gear.user == current_user %>
+          <%= link_to '削除', group_my_gear_path(@group, users_gear.gear_id),  data: { turbo_method: :delete}, remote: true %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

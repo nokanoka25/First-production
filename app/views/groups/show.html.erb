@@ -28,7 +28,7 @@
   <div class="tab-pane fade" id="chat-tab-pane" role="tabpanel" aria-labelledby="chat-tab" tabindex="0"><%= render partial: 'groups/message', collection: @messages %></div>
   <div class="tab-pane fade" id="vote-tab-pane" role="tabpanel" aria-labelledby="vote-tab" tabindex="0"><%= render template: 'posts/index', group: @group, top_voted_post: @top_voted_post %></div>
   <div class="tab-pane fade" id="belongings-tab-pane" role="tabpanel" aria-labelledby="belongings-tab" tabindex="0"><%= render "belongings" %></div>
-  <div class="tab-pane fade" id="mygears-tab-pane" role="tabpanel" aria-labelledby="mygears-tab" tabindex="0"><%= render "mygears" %></div>
+  <div class="tab-pane fade" id="mygears-tab-pane" role="tabpanel" aria-labelledby="mygears-tab" tabindex="0"><%= render template: 'my_gears/index', collection: @group_my_gears %></div>
   <div class="tab-pane fade" id="event-tab-pane" role="tabpanel" aria-labelledby="event-tab" tabindex="0"><%= render "event" %></div>
   <div class="tab-pane fade" id="admin-tab-pane" role="tabpanel" aria-labelledby="admin-tab" tabindex="0"><%= render "admin" %></div>
 </div>

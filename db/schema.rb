@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_09_170954) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_12_175116) do
   create_table "gears", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.integer "length"
@@ -52,6 +52,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_09_170954) do
     t.string "content"
     t.index ["group_id"], name: "index_messages_on_group_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "my_gears", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "gear_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gear_id"], name: "index_my_gears_on_gear_id"
+    t.index ["group_id"], name: "index_my_gears_on_group_id"
+    t.index ["user_id"], name: "index_my_gears_on_user_id"
   end
 
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -102,6 +113,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_09_170954) do
 
   add_foreign_key "messages", "groups"
   add_foreign_key "messages", "users"
+  add_foreign_key "my_gears", "gears"
+  add_foreign_key "my_gears", "groups"
+  add_foreign_key "my_gears", "users"
   add_foreign_key "posts", "groups"
   add_foreign_key "users_gears", "gears"
   add_foreign_key "users_gears", "users"

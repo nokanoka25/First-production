@@ -9,6 +9,7 @@ class Group < ApplicationRecord
   validates :voting_start_at, presence: true
   validates :voting_end_at, presence: true
   validate :voting_dates_are_valid
+  has_many :my_gears
 
   def voting_active?
     return false if voting_start_at.nil? || voting_end_at.nil?
