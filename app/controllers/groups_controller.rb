@@ -23,10 +23,11 @@ class GroupsController < ApplicationController
     @messages = @group.messages
     @post = @group.posts
     @top_voted_post = @group.top_voted_post
-      
-    # グループの全メンバー
-    group_users = @group.users
-      
+
+    # グループ全体の MyGear を取得
+    @group_my_gears = MyGear.includes(:gear, :user).where(group: @group)
+
+    # その他データ取得
     @gears = Gear.joins(users: :messages)
                  .where(messages: { group_id: @group.id })
                  .distinct
@@ -49,6 +50,16 @@ class GroupsController < ApplicationController
     else
       render :set_voting_period
     end
+  end
+
+  def initialize_my_gears
+    @group = Group.find(params[:id])
+    
+    current_user.gears.each do |gear|
+      MyGear.find_or_create_by(user: current_user, gear: gear, group: @group)
+    end
+
+    redirect_to group_path(@group), notice: 'MyGearを初期化しました。'
   end
 
   private

@@ -12,12 +12,14 @@ Rails.application.routes.draw do
   resources :gears, only: %i[new index create edit update destroy]
   resources :groups, only: %i[new create index show] do
     resources :informations, only: %i[new create index edit update]
+    resources :my_gears, only: %i[index destroy]
     resources :posts, only: %i[new index create] do
       resources :votes, only: [:create, :destroy]
     end
     member do
       get :set_voting_period
       patch :update_voting_period
+      post :initialize_my_gears
     end
   end
   
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
   get 'logout' => 'user_sessions#destroy', :as => :logout
   delete 'gears/:id' => 'gears#destroy'
   mount ActionCable.server => '/cable'
+  
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

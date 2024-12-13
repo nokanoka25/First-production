@@ -5,6 +5,7 @@
 <p><%= @total_area %> m²</p>
   <thead>
     <tr>
+      <th>ギアの種類</th>
       <th>ギアの名前</th>
       <th>所有者</th>
       <th>サイズ (m²)</th>
@@ -13,6 +14,7 @@
   <tbody>
     <% @gears.each do |gear| %>
       <tr>
+        <td><%= gear.gear_type %></td>
         <td><%= gear.name %></td>
         <td><%= gear.users.map(&:name).join(", ") %></td>
         <td><%= gear.length * gear.width %></td>
