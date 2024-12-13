@@ -1,0 +1,15 @@
+<h1>予定一覧</h1>
+
+<ul>
+  <% @schedules.each do |schedule| %>
+    <li>
+      <strong><%= schedule.name %></strong> - 
+      <%= schedule.scheduled_at.strftime('%Y-%m-%d %H:%M') %>
+      <%= link_to '編集', edit_group_schedule_path(@group, schedule) %> |
+      <%= link_to '削除', group_schedule_path(@group, schedule), data: { turbo_method: :delete} %>
+    </li>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to '新しい予定を作成', new_group_schedule_path(@group) %>
