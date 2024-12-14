@@ -29,12 +29,12 @@ class GroupsController < ApplicationController
     @group_my_gears = MyGear.includes(:gear, :user).where(group: @group)
 
     # その他データ取得
-    @gears = Gear.joins(users: :messages)
-                 .where(messages: { group_id: @group.id })
+    @gears = Gear.joins(users: :users_groups)
+                 .where(users_groups: { group_id: @group.id })
                  .distinct
     
-    @total_area = Gear.joins(users: :messages)
-                      .where(messages: { group_id: @group.id }, gear_type: ['タープ', 'テント'])
+    @total_area = Gear.joins(users: :users_groups)
+                      .where(users_groups: { group_id: @group.id }, gear_type: ['タープ', 'テント'])
                       .sum('gears.length * gears.width')
   end
 
