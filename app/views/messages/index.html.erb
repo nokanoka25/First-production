@@ -1,0 +1,16 @@
+<div id="chat-tab" class="tab-pane">
+  <h3>Chat</h3>
+
+  <!-- メッセージ一覧 -->
+  <div id="messages">
+    <% @group.messages.each do |message| %>
+      <div class="message">
+        <strong><%= message.user.name %>:</strong>
+        <%= message.content %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- メッセージ送信フォーム -->
+  <%= render 'messages/form', group: @group %>
+</div>

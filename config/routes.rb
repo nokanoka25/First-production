@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :informations, only: %i[new create index edit update]
     resources :my_gears, only: %i[index destroy]
     resources :schedules, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :messages, only: :create
     resources :posts, only: %i[new index create] do
       resources :votes, only: [:create, :destroy]
     end
