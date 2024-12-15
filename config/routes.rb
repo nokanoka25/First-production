@@ -1,11 +1,11 @@
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Sidekiq::Web.use Rack::Auth::Basic do |username, password|
-  username == 'admin' && password == 'password'
+  username == "admin" && password == "password"
 end
 
 Rails.application.routes.draw do
-  mount Sidekiq::Web => '/sidekiq'
+  mount Sidekiq::Web => "/sidekiq"
   get "rooms/show"
   resources :tops
   resources :users, only: %i[new create show edit update destroy]
@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   resources :groups, only: %i[new create index show] do
     resources :informations, only: %i[new create index edit update]
     resources :my_gears, only: %i[index destroy]
-    resources :schedules, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :schedules, only: %i[ :index, :new, :create, :edit, :update, :destroy ]
     resources :messages, only: :create
     resources :posts, only: %i[new index create] do
-      resources :votes, only: [:create, :destroy]
+      resources :votes, only: %i[ :create, :destroy ]
     end
     member do
       get :set_voting_period
@@ -27,14 +27,14 @@ Rails.application.routes.draw do
       post :join_with_token
     end
   end
-  
-  get 'login' => 'user_sessions#new', :as => :login
-  post 'login' => "user_sessions#create"
-  get 'logout' => 'user_sessions#destroy', :as => :logout
-  delete 'gears/:id' => 'gears#destroy'
-  mount ActionCable.server => '/cable'
-  
-  
+
+  get "login" => "user_sessions#new", :as => :login
+  post "login" => "user_sessions#create"
+  get "logout" => "user_sessions#destroy", :as => :logout
+  delete "gears/:id" => "gears#destroy"
+  mount ActionCable.server => "/cable"
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -3,11 +3,11 @@ class Group < ApplicationRecord
   has_many :users, through: :users_groups
   before_create :generate_unique_token
   has_many :messages
-  
+
 
   has_one :information, dependent: :destroy
   has_many :posts
-  belongs_to :top_voted_post, class_name: 'Post', optional: true
+  belongs_to :top_voted_post, class_name: "Post", optional: true
 
   validate :voting_dates_are_valid
   has_many :my_gears
@@ -30,7 +30,7 @@ class Group < ApplicationRecord
     end
   end
 
-  # 
+
   def schedule_voting_result_job
     Rails.logger.info "Debug: schedule_voting_result_job triggered for Group ID #{id}"
     if saved_change_to_voting_end_at?

@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       UsersGroup.create!(user: current_user, group: @group)
-      redirect_to user_path(current_user), notice: 'グループを作成しました。'
+      redirect_to user_path(current_user), notice: "グループを作成しました。"
     else
       Rails.logger.info(@group.errors.full_messages)
       render :new
@@ -34,10 +34,10 @@ class GroupsController < ApplicationController
     @gears = Gear.joins(users: :users_groups)
                  .where(users_groups: { group_id: @group.id })
                  .distinct
-    
+
     @total_area = Gear.joins(users: :users_groups)
-                      .where(users_groups: { group_id: @group.id }, gear_type: ['タープ', 'テント'])
-                      .sum('gears.length * gears.width')
+                      .where(users_groups: { group_id: @group.id }, gear_type: [ "タープ", "テント" ])
+                      .sum("gears.length * gears.width")
   end
 
   def set_voting_period
@@ -49,7 +49,7 @@ class GroupsController < ApplicationController
     if @group.update(voting_period_params)
       # ジョブをスケジュール
       @group.schedule_voting_result_job
-      redirect_to @group, notice: '投票期間を設定しました。'
+      redirect_to @group, notice: "投票期間を設定しました。"
     else
       render :set_voting_period
     end
@@ -57,12 +57,12 @@ class GroupsController < ApplicationController
 
   def initialize_my_gears
     @group = Group.find(params[:id])
-    
+
     current_user.gears.each do |gear|
       MyGear.find_or_create_by(user: current_user, gear: gear, group: @group)
     end
 
-    redirect_to group_path(@group), notice: 'MyGearを初期化しました。'
+    redirect_to group_path(@group), notice: "MyGearを初期化しました。"
   end
 
   def join_with_token

@@ -2,12 +2,12 @@ class MessagesController < ApplicationController
     before_action :set_group
 
   def create
-    #親オブジェクトに紐づけて作成
+    # 親オブジェクトに紐づけて作成
     @message = @group.messages.build(message_params)
     @message.user = current_user
 
     if @message.save
-      redirect_to group_path(@group), notice: 'Message sent!'
+      redirect_to group_path(@group), notice: "Message sent!"
     else
       Rails.logger.error(@message.errors.full_messages)
       flash[:alert] = "Message cannot be empty"

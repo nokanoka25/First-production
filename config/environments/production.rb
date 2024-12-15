@@ -47,11 +47,11 @@ Rails.application.configure do
   config.active_support.report_deprecations = false
 
   # Replace the default in-process memory cache store with a durable alternative.
-  #config.cache_store = :solid_cache_store
+  # config.cache_store = :solid_cache_store
 
   # Replace the default in-process and non-durable queuing backend for Active Job.
-  #config.active_job.queue_adapter = :solid_queue
-  #config.solid_queue.connects_to = { database: { writing: :queue } }
+  # config.active_job.queue_adapter = :solid_queue
+  # config.solid_queue.connects_to = { database: { writing: :queue } }
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -90,7 +90,7 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
   # Actioncableの送信元リクエストの許可。アプリ名が入っているリクエストのみ許可する設定
   config.action_cable.allowed_request_origins = [
-  %r{https?://.*boiling-forest-06110-26ed33e0d459.*} 
+  %r{https?://.*boiling-forest-06110-26ed33e0d459.*}
 ]
 
 config.action_cable.worker_pool_size = 4

@@ -8,6 +8,5 @@ class ChangeGroupIdAndUserIdTypeInMessages < ActiveRecord::Migration[8.0]
 
     add_foreign_key :messages, :groups
     add_foreign_key :messages, :users
-
   end
 end
