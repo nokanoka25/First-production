@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
  
   def show
-    @gears = Gear.all
+    @gears = current_user.gears
     @groups = current_user.groups
   end
 

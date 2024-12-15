@@ -13,7 +13,7 @@ class SchedulesController < ApplicationController
   def create
     @schedule = @group.schedules.new(schedule_params)
     if @schedule.save
-      redirect_to group_schedules_path(@group), notice: '予定が作成されました。'
+      redirect_to group_path(@schedule.group_id), notice: '予定が作成されました。'
     else
       render :new, status: :unprocessable_entity
     end
