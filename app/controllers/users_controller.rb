@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :show]
+  before_action :set_user, only: [ :edit, :update, :show ]
 
- 
+
   def show
     @gears = current_user.gears
     @groups = current_user.groups
@@ -14,24 +14,24 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to(:tops, notice: 'User was successfully created')
+      redirect_to(:tops, notice: "ユーザー登録完了")
     else
-      render 'new'
+      render "new"
     end
   end
 
   def update
     if @user.update(user_params)
-      redirect_to(:user, notice: 'User was successfully created')
+      redirect_to(:user, notice: "変更しました")
     else
-      render 'edit'
+      render "edit"
     end
   end
 
   def edit; end
 
-  
-  
+
+
   private
 
   def set_user

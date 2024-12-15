@@ -1,9 +1,8 @@
 class InformationsController < ApplicationController
- 
   def index
     @information = Information.find(params[:id])
   end
-  
+
   def new
     @information = Information.new
   end
@@ -12,9 +11,9 @@ class InformationsController < ApplicationController
     @information = Information.new(information_params)
     @information.group_id = params[:group_id]
     if @information.save
-      redirect_to group_path(@information.group_id), notice: 'グループを作成しました。'
+      redirect_to group_path(@information.group_id), notice: "グループを作成しました。"
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -25,9 +24,9 @@ class InformationsController < ApplicationController
   def update
     @information = Information.find(params[:id])
     if @information.update(information_params)
-      redirect_to group_path(@information.group_id), notice: '情報を更新しました。'
+      redirect_to group_path(@information.group_id), notice: "情報を更新しました。"
     else
-      render 'edit'
+      render "edit"
     end
   end
 
