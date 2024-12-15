@@ -6,6 +6,7 @@ end
 
 Rails.application.routes.draw do
   mount Sidekiq::Web => "/sidekiq"
+  root 'tops#index'
   get "rooms/show"
   resources :tops
   resources :users, only: %i[new create show edit update destroy]
@@ -13,10 +14,10 @@ Rails.application.routes.draw do
   resources :groups, only: %i[new create index show] do
     resources :informations, only: %i[new create index edit update]
     resources :my_gears, only: %i[index destroy]
-    resources :schedules, only: %i[ :index, :new, :create, :edit, :update, :destroy ]
-    resources :messages, only: :create
+    resources :schedules, only: %i[index new create edit update destroy ]
+    resources :messages, only: %i[create]
     resources :posts, only: %i[new index create] do
-      resources :votes, only: %i[ :create, :destroy ]
+      resources :votes, only: %i[ create destroy ]
     end
     member do
       get :set_voting_period
