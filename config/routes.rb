@@ -23,6 +23,9 @@ Rails.application.routes.draw do
       patch :update_voting_period
       post :initialize_my_gears
     end
+    collection do
+      post :join_with_token
+    end
   end
   
   get 'login' => 'user_sessions#new', :as => :login

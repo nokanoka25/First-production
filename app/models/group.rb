@@ -1,15 +1,14 @@
 class Group < ApplicationRecord
   has_many :users_groups
   has_many :users, through: :users_groups
+  before_create :generate_unique_token
   has_many :messages
-  has_many :users, through: :messages
+  
 
   has_one :information, dependent: :destroy
   has_many :posts
   belongs_to :top_voted_post, class_name: 'Post', optional: true
 
-  validates :voting_start_at, presence: true
-  validates :voting_end_at, presence: true
   validate :voting_dates_are_valid
   has_many :my_gears
   has_many :schedules, dependent: :destroy
@@ -44,5 +43,14 @@ class Group < ApplicationRecord
     utc_time = voting_end_at.utc
     Rails.logger.info "Debug: Scheduling UpdateVotingResultsJob for Group ID #{id} at #{utc_time} (UTC)"
     UpdateVotingResultsJob.set(wait_until: voting_end_at).perform_later(id)
+  end
+
+  private
+
+  def generate_unique_token
+    loop do
+      self.token = SecureRandom.hex(6) # 6桁のランダムな16進数を生成
+      break unless Group.exists?(token: token)
+    end
   end
 end

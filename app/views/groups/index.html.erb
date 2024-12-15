@@ -3,6 +3,15 @@
 <% @groups.each do |group| %>
   <%= link_to group.name, group_path(group) %>
 <% end %>
+
+<!-- app/views/groups/index.html.erb -->
+<%= form_with url: join_with_token_groups_path, method: :post, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :token, "グループ招待トークン" %>
+    <%= f.text_field :token, class: "form-control" %>
+  </div>
+  <%= f.submit "参加する", class: "btn btn-primary" %>
+<% end %>
   
 
 <%= link_to 'グループ作成', new_group_path %>

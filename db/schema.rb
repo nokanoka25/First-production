@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_14_011631) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_14_082955) do
   create_table "gears", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.integer "length"
@@ -27,6 +27,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_14_011631) do
     t.datetime "voting_start_at"
     t.datetime "voting_end_at"
     t.integer "top_voted_post_id"
+    t.string "token"
+    t.index ["token"], name: "index_groups_on_token", unique: true
   end
 
   create_table "information", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

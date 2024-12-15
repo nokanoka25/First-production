@@ -11,8 +11,10 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
+      UsersGroup.create!(user: current_user, group: @group)
       redirect_to user_path(current_user), notice: 'グループを作成しました。'
     else
+      Rails.logger.info(@group.errors.full_messages)
       render :new
     end
   end
@@ -61,6 +63,19 @@ class GroupsController < ApplicationController
     end
 
     redirect_to group_path(@group), notice: 'MyGearを初期化しました。'
+  end
+
+  def join_with_token
+    @group = Group.find_by(token: params[:token])
+
+    if @group.nil?
+      redirect_to groups_path, alert: "無効なトークンです。"
+    elsif @group.users.include?(current_user)
+      redirect_to group_path(@group), notice: "既にこのグループに参加しています。"
+    else
+      @group.users << current_user
+      redirect_to group_path(@group), notice: "グループに参加しました！"
+    end
   end
 
   private
