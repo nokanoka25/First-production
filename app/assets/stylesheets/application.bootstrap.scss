@@ -2,8 +2,88 @@
 @import 'bootstrap-icons/font/bootstrap-icons';
 
 .tops-index {
+  position: relative; // 背景を相対位置にする
+  z-index: 1; // ヘッダーよりも低い値
   background-image: url('top_background.jpg'); /* 背景画像を指定 */
   background-size: cover; /* 全体をカバー */
   background-repeat: no-repeat; /* 繰り返しなし */
   background-position: center center; /* 中央に配置 */
+  height: 100vh; // 背景が全画面に表示
+}
+
+
+
+header {
+  position: fixed; // ヘッダーを固定
+  top: 0;
+  left: 0;
+  width: 100%; // ヘッダーを画面幅全体に広げる
+  z-index: 10; // 背景よりも前面に表示
+  background-color: rgba(255, 255, 255, 0.9); // 半透明の背景
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // 影を追加して見やすく
+  padding: 10px 20px;
+
+  // ヘッダー内のナビゲーションリンク
+  nav {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      color: #333;
+      text-decoration: none;
+      margin: 0 10px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+body {
+  padding-top: 60px; // ヘッダーの高さに合わせて余白を確保
+  min-height: 700px;
+}
+
+// フッターのスタイルを追加
+footer {
+  
+  color: #fff; // フッターテキストの色
+  text-align: center; // テキストを中央揃え
+  padding: 20px 0; // 上下に余白を追加
+  position: fixed;
+  bottom: 0; /*下に固定*/
+  z-index: 5; // 他の要素より前面に表示
+
+  nav {
+    margin-top: 10px; // ナビゲーションリンクの上部余白
+
+    a {
+      color: #fff; // リンクを白色に設定
+      text-decoration: none;
+      margin: 0 15px; // リンク間の余白
+
+      &:hover {
+        text-decoration: underline; // ホバー時のスタイル
+      }
+    }
+  }
+
+  p {
+    margin: 0; // テキストの上下余白をなくす
+    font-size: 0.9rem; // テキストサイズを少し小さめに
+  }
+}
+
+// レスポンシブ対応 (オプション)
+@media (max-width: 768px) {
+  footer {
+    padding: 15px 0; // モバイル用に余白を調整
+
+    nav {
+      display: flex;
+      flex-direction: column; // 縦方向にリンクを配置
+      gap: 5px; // 各リンクの間隔
+    }
+  }
 }

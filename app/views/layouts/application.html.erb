@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html>
+  <header class="d-flex justify-content-between align-items-center p-3">
+    <div class="header-left"></div>
+    <h1 class="h3 m-0">
+      <%= link_to 'Camplan', root_path, class: 'text-black' %>
+    </h1>
+
+    <div>
+      <% if current_user.present? %>
+        <%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-danger btn-sm' %>
+        <%= link_to 'マイページ', user_path(id: current_user), class: 'btn btn-outline-primary btn-sm' %>
+      <% else %>
+        <%= link_to 'ログイン', login_path, class: 'btn btn-primary btn-sm' %>
+        <%= link_to 'サインアップ', new_user_path, class: 'btn btn-primary btn-sm' %>
+      <% end %>
+    </div>
+</header>
   <head>
-    <title><%= content_for(:title) || "Myapp" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <div class="container d-flex justify-content-between align-items-center">
+      
+      <nav>
+        
+      </nav>
+    </div>
 
     <%= yield :head %>
 
@@ -27,4 +43,14 @@
     <body class="<%= controller_name %>-<%= action_name %>">
     <%= yield %>
   </body>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+      <p>&copy; <%= Time.now.year %> Camplan. All rights reserved.</p>
+      <nav>
+        <%= link_to '利用規約', terms_path, class: 'text-white me-3' %>
+        <%= link_to 'プライバシーポリシー', privacy_path, class: 'text-white me-3' %>
+      </nav>
+    </div>
+  </footer>
 </html>
