@@ -1,2 +1,9 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+.tops-index {
+  background-image: url('top_background.jpg'); /* 背景画像を指定 */
+  background-size: cover; /* 全体をカバー */
+  background-repeat: no-repeat; /* 繰り返しなし */
+  background-position: center center; /* 中央に配置 */
+}
