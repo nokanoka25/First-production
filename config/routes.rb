@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get "logout" => "user_sessions#destroy", :as => :logout
   delete "gears/:id" => "gears#destroy"
   mount ActionCable.server => "/cable"
+  get 'terms', to: 'pages#terms'
+  get 'privacy', to: 'pages#privacy'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
