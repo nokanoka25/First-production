@@ -1,6 +1,6 @@
-<h1><%= "#{@group.name}のグループページ" %></h1>
-<%= link_to 'マイページに戻る', user_path(current_user), class: 'btn btn-primary' %>
-<%= button_to 'キャンプギア読み込み', initialize_my_gears_group_path(@group),data: { turbo_method: :post} %>
+<h1 class="text-center title"><%= "#{@group.name}のGroup page" %></h1> <!-- titleはscssに定義 -->
+<%= button_to 'キャンプギア読み込み', initialize_my_gears_group_path(@group),data: { turbo_method: :post}, class: 'btn btn-outline-dark' %>
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="information-tab" data-bs-toggle="tab" data-bs-target="#information-tab-pane" type="button" role="tab" aria-controls="information-tab-pane" aria-selected="true">基本情報</button>
