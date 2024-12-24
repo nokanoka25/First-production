@@ -11,6 +11,12 @@
   height: 100vh; // 背景が全画面に表示
 }
 
+.title {
+  font-family: 'Century', serif;
+  font-size: 2rem; /* 必要に応じてサイズを変更 */
+  font-weight: bold; /* フォントの太さを変更 */
+}
+
 
 
 header {
@@ -41,7 +47,7 @@ header {
 }
 
 body {
-  padding-top: 60px; // ヘッダーの高さに合わせて余白を確保
+  padding-top: 90px; // ヘッダーの高さに合わせて余白を確保
   min-height: 700px;
 }
 
