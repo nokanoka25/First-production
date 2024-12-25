@@ -1,9 +1,14 @@
-<%= form_with model: @user, url: user_path, method: :put do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div>
-    <%= f.submit '更新' %>
-  </div>
-<% end %>
+<div class="text-center mb-3">
+  <strong>アカウント情報変更</strong>
+</div>
+<div class="text-center">
+  <%= form_with model: @user, url: user_path, method: :put do |f| %>
+    <div class="mb-3" style="max-width: 300px; margin: 0 auto;">
+      <%= f.label :名前 %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div>
+      <%= f.submit '変更する', class: "btn btn-primary btn-sm" %>
+    </div>
+  <% end %>
+</div>

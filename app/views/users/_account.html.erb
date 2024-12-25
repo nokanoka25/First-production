@@ -1,5 +1,27 @@
-<p>アカウント情報のコンテンツをここに記述</p>
-<%= "ユーザー名：#{@user.name}" %>
-<%= "メールアドレス：#{@user.email}" %>
-<%= "パスワード： ※※※※※※※※※※※" %>
-<%= link_to 'アカウント情報変更', edit_user_path %>
+<div class="text-center">
+  <hr class="my-2 custom-hr">
+  <div class="row custom-row">
+    <div class="col-md-6">ユーザー名</div>
+    <div class="col-md-6"><%= @user.name %></div>
+  </div>
+
+  <hr class="my-2 custom-hr">
+
+  <div class="row custom-row">
+    <div class="col-md-6">メールアドレス</div>
+    <div class="col-md-6"><%= @user.email %></div>
+  </div>
+
+  <hr class="my-2 custom-hr">
+
+  <div class="row custom-row">
+    <div class="col-md-6">パスワード</div>
+    <div class="col-md-6">※※※※※※※※※※※</div>
+  </div>
+
+  <hr class="my-2 custom-hr">
+</div>
+
+<div class="text-center">
+  <%= link_to 'アカウント情報変更', edit_user_path, class: "btn btn-primary btn-sm" %>
+</div>
