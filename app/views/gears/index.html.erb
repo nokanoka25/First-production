@@ -1,16 +1,39 @@
-<h1>キャンプギア一覧</h1>
+<div class="container text-center">
+  <div class="title">
+    <h1>キャンプギア一覧</h1>
+  </div>
+  <% @gears.each do |gear| %>
+    <!-- 見出し部分 -->
+    <div class="row justify-content-center mb-2 custom-row">
+      <div class="col-md-2">種類</div>
+      <div class="col-md-2">ギア名</div>
+      <div class="col-md-2">縦幅</div>
+      <div class="col-md-2">横幅</div>
+    </div>
+    
+    <!-- データ部分 -->
+    <div class="row justify-content-center mb-2 custom-row">
+      <div class="col-md-2"><%= gear.gear_type %></div>
+      <div class="col-md-2"><%= gear.name %></div>
+      <div class="col-md-2"><%= gear.length %></div>
+      <div class="col-md-2"><%= gear.width %></div>
+    </div>
+    
+    <!-- 編集・削除リンク -->
+    <div class="row justify-content-center mb-2">
+      <div class="col-md-4">
+        <%= link_to '編集', edit_gear_path(gear), class: 'btn btn-primary btn-sm me-2' %>
+        <%= link_to '削除', gear, data: { turbo_method: :delete }, class: 'btn btn-danger btn-sm' %>
+      </div>
+    </div>
 
-  <ul>
-    <% @gears.each do |gear| %>
-      <li>
-        <%= gear.gear_type %>
-        <%= gear.name %>
-        <%= gear.length %>
-        <%= gear.width %>
-        <%= link_to '編集', edit_gear_path(gear) %>
-        <%= link_to '削除', gear, data: { turbo_method: :delete} %>
+    <hr class="my-2 custom-hr">
+  <% end %>
 
-      </li>
-    <% end %>
-  </ul>
-    <%= link_to 'キャンプギア登録', new_gear_path %>
+  <!-- 登録ボタン -->
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-4">
+      <%= link_to 'キャンプギア登録', new_gear_path, class: 'btn btn-success btn-sm' %>
+    </div>
+  </div>
+</div>
