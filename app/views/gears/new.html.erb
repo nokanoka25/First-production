@@ -1,24 +1,39 @@
-<%= form_with model: @gear, local: true do |f| %>
-    <div class='mb-3'>
-      <%= f.label :gear_type, 'ギアの種類', class: 'form-select' %>
-      <%= f.select :gear_type, [["テント", "テント"], ["タープ", "タープ"], ["チェア", "チェア"], ["シュラフ", "シュラフ"], ["エアマット", "エアマット"]\
-      ,["ランタン", "ランタン"], ["その他", "その他"]], include_blank: "選択して下さい" %>
-    </div>
-  
-    <div class='mb-3'>
-      <%= f.label :name, 'ギアの名前' %>
-      <%= f.text_field :name, class: 'form-control', placeholder: "例: テントA" %>
-    </div>
-  
-    <div class='mb-3'>
-      <%= f.label :length, '設置面積縦' %>
-      <%= f.number_field :length, step: 1, class: 'form-control', placeholder: "例: 1000" %>
-    </div>
-  
-    <div class='mb-3'>
-      <%= f.label :width, '設置面積横' %>
-      <%= f.number_field :width, step: 1, class: 'form-control', placeholder: "例: 500" %>
-    </div>
-  
-    <%= f.submit '保存', class: 'btn btn-primary' %>
-  <% end %>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="w-50 text-center"> <!-- フォーム全体の幅を50%に制限し、中央揃え -->
+    <h1 class="mb-4 title">キャンプギア登録</h1>
+    <%= form_with model: @gear, local: true do |f| %>
+      <div class="mb-3">
+        <%= f.label :gear_type, 'ギアの種類', class: 'form-label' %>
+        <div class="d-flex justify-content-center">
+          <%= f.select :gear_type, [["テント", "テント"], ["タープ", "タープ"], ["チェア", "チェア"], ["シュラフ", "シュラフ"], ["エアマット", "エアマット"], ["ランタン", "ランタン"], ["その他", "その他"]],
+                       include_blank: "選択して下さい", class: "form-select", style: "max-width: 300px;" %>
+        </div>
+      </div>
+    
+      <div class="mb-3">
+        <%= f.label :name, 'ギアの名前', class: 'form-label' %>
+        <div class="d-flex justify-content-center">
+          <%= f.text_field :name, class: 'form-control', placeholder: "例: テントA", style: "max-width: 300px;" %>
+        </div>
+      </div>
+    
+      <div class="mb-3">
+        <%= f.label :length, '設置面積縦', class: 'form-label' %>
+        <div class="d-flex justify-content-center">
+          <%= f.number_field :length, step: 1, class: 'form-control', placeholder: "例: 1000", style: "max-width: 300px;" %>
+        </div>
+      </div>
+    
+      <div class="mb-3">
+        <%= f.label :width, '設置面積横', class: 'form-label' %>
+        <div class="d-flex justify-content-center">
+          <%= f.number_field :width, step: 1, class: 'form-control', placeholder: "例: 500", style: "max-width: 300px;" %>
+        </div>
+      </div>
+    
+      <div class="text-center">
+        <%= f.submit '保存', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
