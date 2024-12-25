@@ -1,17 +1,31 @@
-<p>参加グループ一覧</p>
 
-<% @groups.each do |group| %>
-  <%= link_to group.name, group_path(group) %>
-<% end %>
-
-<!-- app/views/groups/index.html.erb -->
-<%= form_with url: join_with_token_groups_path, method: :post, local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :token, "グループ招待トークン" %>
-    <%= f.text_field :token, class: "form-control" %>
+<div class="container text-center">
+  <div class="title">
+    <h1><p>参加グループ一覧</p></h1>
   </div>
-  <%= f.submit "参加する", class: "btn btn-primary" %>
-<% end %>
-  
 
-<%= link_to 'グループ作成', new_group_path %>
+  <!-- app/views/groups/index.html.erb -->
+  <div class="d-flex justify-content-center align-items-center mt-4"> <!-- フォーム全体を中央に揃える -->
+    <%= form_with url: join_with_token_groups_path, method: :post, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :token, "グループ招待トークン" %>
+        <%= f.text_field :token, class: "form-control" %>
+      </div>
+    <%= f.submit "参加する", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
+  <% @groups.each do |group| %>
+    <div class="row justify-content-center mt-4 group-index-row">
+      <div class="col-auto"> <!-- ボタンの幅を自動調整 -->
+        <%= link_to group.name, group_path(group), class: "btn btn-outline-success btn-sm" %>
+      </div>
+    </div>
+  <% end %>
+
+  
+  <div class="mt-5">
+    <%= link_to 'グループ作成', new_group_path, class: "btn btn-primary" %>
+  </div>
+</div>
