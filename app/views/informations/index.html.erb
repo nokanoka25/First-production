@@ -1,19 +1,76 @@
-<p>基本情報</p>
-<%= @group.name %>
 
 <% if @information.present? %>
-  <p>日程: <%= "#{@information.start_day} ~ #{@information.finish_day}" %></p>
-  <p>キャンプ場名: <%= @information.camp_site_name %></p>
-  <p>住所: <%= @information.camp_site_address %></p>
-  <p>キャンプ場URL: <%= @information.camp_site_url %></p>
-  <p>車台数: <%= @information.car %></p>
-  <p>出発地点: <%= @information.start_point %></p>
-  <p>チェックイン: <%= @information.check_in %></p>
-  <p>チェックアウト: <%= @information.check_out %></p>
-  <%= link_to '編集', edit_group_information_path(@group, @information) %>
+  <div class="text-center">
+    <hr class="my-2 custom-hr">
+    <div class="row custom-row">
+      <div class="col-md-6">日程</div>
+      <div class="col-md-6"><%= "#{@information.start_day} ~ #{@information.finish_day}" %></div>
+    </div>
+
+    <hr class="my-2 custom-hr">
+
+    <div class="row custom-row">
+      <div class="col-md-6">キャンプ場名</div>
+      <div class="col-md-6"><%= @information.camp_site_name %></div>
+    </div>
+
+    <hr class="my-2 custom-hr">
+
+    <div class="row custom-row">
+      <div class="col-md-6">キャンプ場住所</div>
+      <div class="col-md-6"><%= @information.camp_site_address %></div>
+    </div>
+
+    <hr class="my-2 custom-hr">
+
+    <div class="row custom-row">
+      <div class="col-md-6">キャンプ場URL</div>
+      <div class="col-md-6"><%= @information.camp_site_url %></div>
+    </div>
+
+    <hr class="my-2 custom-hr">
+
+
+    <div class="row custom-row">
+      <div class="col-md-6">車台数</div>
+      <div class="col-md-6"><%= @information.car %></div>
+    </div>
+
+    <hr class="my-2 custom-hr">
+
+    <div class="row custom-row">
+      <div class="col-md-6">出発地点</div>
+      <div class="col-md-6"><%= @information.start_point %></div>
+    </div>
+
+    <hr class="my-2 custom-hr">
+
+    <div class="row custom-row">
+      <div class="col-md-6">チェックイン</div>
+      <div class="col-md-6"><%= @information.check_in %></div>
+    </div>
+
+    <hr class="my-2 custom-hr">
+
+    <div class="row custom-row">
+      <div class="col-md-6">チェックアウト</div>
+      <div class="col-md-6"><%= @information.check_out %></div>
+    </div>
+
+    <hr class="my-2 custom-hr">
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <%= link_to '編集', edit_group_information_path(@group, @information), class: "btn btn-primary me-2" %>
+        <%= link_to '登録', new_group_information_path(@group), class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
 <% else %>
   <p>関連する情報が登録されていません。</p>
 <% end %>
 
 
-<%= link_to '登録', new_group_information_path(@group) %>
+<div class="text-center">
+  
+
+
