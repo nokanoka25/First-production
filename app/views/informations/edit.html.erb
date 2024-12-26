@@ -1,48 +1,101 @@
-<%= form_with model: [@information.group, @information], local: true  do |f| %>
-    <div class='mb-3'>
-    <%= f.label :start_day, '出発日' %>
-    <%= f.date_select :start_day, class: 'form-control' %>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="w-50 text-center"> <!-- フォーム全体を中央揃え -->
+  <h1 class="mb-4 title">グループ基本情報の編集</h1>
+    <%= form_with model: [@information.group, @information], local: true do |f| %>
+      <div class='mb-3'>
+        <%= f.label :start_day, '出発日', class: 'form-label d-block' %> <!-- ラベルを中央揃え -->
+        <div class="d-flex justify-content-center">
+        <%= f.select :start_day_year, (Date.today.year..(Date.today.year + 10)).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+          <span class="mx-1">年</span>
+          <%= f.select :start_day_month, (1..12).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+          <span class="mx-1">月</span>
+          <%= f.select :start_day_day, (1..31).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+          <span class="mx-1">日</span>
+        </div>
+      </div>
+    
+      <div class='mb-3'>
+        <%= f.label :finish_day, '終了日', class: 'form-label d-block' %>
+        <div class="d-flex justify-content-center">
+        <%= f.select :start_day_year, (Date.today.year..(Date.today.year + 10)).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+        <span class="mx-1">年</span>
+        <%= f.select :start_day_month, (1..12).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+        <span class="mx-1">月</span>
+        <%= f.select :start_day_day, (1..31).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+        <span class="mx-1">日</span>
+        </div>
+      </div>
+    
+      <div class='mb-3'>
+        <%= f.label :camp_site_name, 'キャンプ場名', class: 'form-label d-block' %>
+        <div class="d-flex justify-content-center">
+          <%= f.text_field :camp_site_name, class: 'form-control', style: "max-width: 300px;" %>
+        </div>
+      </div>
+    
+      <div class='mb-3'>
+        <%= f.label :camp_site_address, 'キャンプ場住所', class: 'form-label d-block' %>
+        <div class="d-flex justify-content-center">
+          <%= f.text_field :camp_site_address, class: 'form-control', style: "max-width: 300px;" %>
+        </div>
+      </div>
+
+      <div class='mb-3'>
+        <%= f.label :camp_site_url, 'URL', class: 'form-label d-block' %>
+        <div class="d-flex justify-content-center">
+          <%= f.text_field :camp_site_url, class: 'form-control', style: "max-width: 300px;" %>
+        </div>
+      </div>
+
+      <div class='mb-3'>
+        <%= f.label :car, '車台数', class: 'form-label d-block' %>
+        <div class="d-flex justify-content-center">
+          <%= f.text_field :car, class: 'form-control', style: "max-width: 300px;" %>
+        </div>
+      </div>
+
+      <div class='mb-3'>
+        <%= f.label :start_point, '出発地点', class: 'form-label d-block' %>
+        <div class="d-flex justify-content-center">
+          <%= f.text_field :start_point, class: 'form-control', style: "max-width: 300px;" %>
+        </div>
+      </div>
+
+      <div class='mb-3'>
+        <%= f.label :heck_in, 'チェックイン日時', class: 'form-label d-block' %>
+        <div class="d-flex justify-content-center align-items-center">
+          <%= f.select :check_in_year, (Date.today.year..(Date.today.year + 10)).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+          <span class="mx-1">年</span>
+          <%= f.select :check_in_month, (1..12).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+          <span class="mx-1">月</span>
+          <%= f.select :check_in_day, (1..31).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+          <span class="mx-1">日</span>
+          <%= f.select :check_in_hour, (0..23).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+          <span class="mx-1">時</span>
+          <%= f.select :check_in_minute, (0..59).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+          <span class="mx-1">分</span>
+        </div>
+      </div>
+
+      <div class='mb-3'>
+        <%= f.label :check_out, 'チェックアウト', class: 'form-label d-block' %>
+        <div class="d-flex justify-content-center align-items-center">
+          <%= f.select :check_out_year, (Date.today.year..(Date.today.year + 10)).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+          <span class="mx-1">年</span>
+          <%= f.select :check_out_month, (1..12).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+          <span class="mx-1">月</span>
+          <%= f.select :check_out_day, (1..31).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+          <span class="mx-1">日</span>
+          <%= f.select :check_out_hour, (0..23).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+          <span class="mx-1">時</span>
+          <%= f.select :check_out_minute, (0..59).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
+          <span class="mx-1">分</span>
+        </div>
+      </div>
+    
+      <div class="text-center">
+        <%= f.submit '保存', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-  
-    <div class='mb-3'>
-      <%= f.label :finish_day, '終了日' %>
-      <%= f.date_select :finish_day, class: 'form-control' %>
-    </div>
-  
-    <div class='mb-3'>
-      <%= f.label :camp_site_name, 'キャンプ場名' %>
-      <%= f.text_field :camp_site_name, class: 'form-control' %>
-    </div>
-  
-    <div class='mb-3'>
-      <%= f.label :camp_site_address, 'キャンプ場住所' %>
-      <%= f.text_field :camp_site_address,  class: 'form-control' %>
-    </div>
-
-    <div class='mb-3'>
-      <%= f.label :camp_site_url, 'URL' %>
-      <%= f.text_field :camp_site_url, class: 'form-control' %>
-    </div>
-
-    <div class='mb-3'>
-      <%= f.label :car, '車台数' %>
-      <%= f.text_field :car, class: 'form-control' %>
-    </div>
-
-    <div class='mb-3'>
-      <%= f.label :start_point, '出発地点' %>
-      <%= f.text_field :start_point, class: 'form-control' %>
-    </div>
-
-    <div class='mb-3'>
-      <%= f.label :heck_in, 'チェックイン日時' %>
-      <%= f.datetime_select :check_in, class: 'form-control' %>
-    </div>
-
-    <div class='mb-3'>
-      <%= f.label :check_out, 'チェックアウト' %>
-      <%= f.datetime_select :check_out, class: 'form-control' %>
-    </div>
-  
-    <%= f.submit '保存', class: 'btn btn-primary' %>
-  <% end %>
+</div>
