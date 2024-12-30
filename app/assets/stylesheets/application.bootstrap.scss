@@ -11,6 +11,46 @@
   height: 100vh; // 背景が全画面に表示
 }
 
+.chat-container {
+  height: 50vh; /* チャットエリアの高さ */
+  overflow-y: auto; /* 縦スクロールを有効に */
+  background-color: #f9f9f9; /* 背景色 */
+  padding: 15px; /* 余白 */
+  border-radius: 10px; /* 角を丸く */
+}
+
+#message-form {
+  position: relative;
+  bottom: 0;
+  padding: 10px;
+  background-color: #fff; /* フォームの背景色 */
+  border-top: 1px solid #ddd; /* フォームの上部の線 */
+}
+
+#message-form {
+  background-color: #fff; /* フォームの背景色 */
+  border-top: 1px solid #ddd; /* フォームの上部の線 */
+  padding: 10px;
+}
+
+#message-form form {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 入力フィールドとボタンの間隔 */
+}
+
+#message-form textarea {
+  flex: 1; /* 入力フィールドを広げる */
+  height: 40px; /* フォームの高さを小さく */
+  resize: none; /* テキストエリアのリサイズを無効化 */
+}
+
+#message-form button {
+  height: 40px; /* ボタンの高さを合わせる */
+  padding: 0 15px; /* ボタンの左右の余白 */
+}
+
+
 .title {
   font-family: 'Century', serif;
   font-size: 2rem; /* 必要に応じてサイズを変更 */
@@ -31,6 +71,22 @@
 .group-index-row {
   height: 30px; /* 高さを指定 */
   align-items: center; /* 垂直方向に中央揃え */
+}
+
+.message {
+  max-width: 70%; /* メッセージの幅を制限 */
+  padding: 15px; /* 内側の余白 */
+  border-radius: 10px; /* 角を丸く */
+}
+
+.message.right {
+  background-color: #007bff; /* 自分のチャットの背景色（青系） */
+  color: white; /* テキストの色を白に */
+}
+
+.message.left {
+  background-color: #e9ecef; /* 他人のチャットの背景色（グレー系） */
+  color: #333; /* テキストの色を黒に近いグレーに */
 }
 
 

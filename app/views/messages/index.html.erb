@@ -2,15 +2,30 @@
   <h3>Chat</h3>
 
   <!-- メッセージ一覧 -->
-  <div id="messages">
+  <div id="messages" class="chat-container">
     <% @group.messages.each do |message| %>
-      <div class="message">
-        <strong><%= message.user.name %>:</strong>
-        <%= message.content %>
-      </div>
+      <% if message.user_id == current_user.id %>
+        <!-- 自分のメッセージ -->
+        <div class="d-flex justify-content-end mb-3">
+          <div class="message right p-3 rounded">
+            <strong>あなた:</strong>
+            <%= message.content %>
+          </div>
+        </div>
+      <% else %>
+        <!-- 他人のメッセージ -->
+        <div class="d-flex justify-content-start mb-3">
+          <div class="message left p-3 rounded">
+            <strong><%= message.user.name %>:</strong>
+            <%= message.content %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-  </div>
 
   <!-- メッセージ送信フォーム -->
-  <%= render 'messages/form', group: @group %>
+    <div id="message-form" class="d-flex justify-content-center mb-3">
+      <%= render 'messages/form', group: @group %>
+    </div>
+  </div>
 </div>
