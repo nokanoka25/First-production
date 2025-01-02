@@ -1,32 +1,38 @@
 
-<table>
-  <thead>
+<p>MyGears Count: <%= @group_my_gears.count %></p>
 
-  <p>MyGears Count: <%= @group_my_gears.count %></p>
-    <tr>
-      <th>ギア名</th>
-      <th>所有者</th>
-      <th>種類</th>
-      <th>縦</th>
-      <th>横</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @group_my_gears.each do |users_gear| %>
-      <tr>
-        <td><%= users_gear.gear.name %></td>
-        <td><%= users_gear.user.name %></td>
-        <td><%= users_gear.gear.gear_type %></td>
-        <td><%= users_gear.gear.length %></td>
-        <td><%= users_gear.gear.width %></td>
-        
-        <td>
-        <p>Gear ID: <%= users_gear.gear_id %></p>
-          <% if users_gear.user == current_user %>
-          <%= link_to '削除', group_my_gear_path(@group, users_gear.gear_id),  data: { turbo_method: :delete}, remote: true %>
-          <% end %>
-        </td>
-      </tr>
+
+<div class="text-center">
+  <% @group_my_gears.each do |users_gear| %>
+    <hr class="my-2 custom-hr">
+    <div class="row">
+      <div class="col-md-6">ギア名</div>
+      <div class="col-md-6"><%= users_gear.gear.name %></div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6">所有者</div>
+      <div class="col-md-6"><%= users_gear.user.name %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">種類</div>
+      <div class="col-md-6"><%= users_gear.gear.gear_type %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">縦</div>
+      <div class="col-md-6"><%= users_gear.gear.length %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">横</div>
+      <div class="col-md-6"><%= users_gear.gear.width %></div>
+    </div>
+
+    <% if users_gear.user == current_user %>
+      <%= link_to '削除', group_my_gear_path(@group, users_gear.gear_id), data: { turbo_method: :delete}, remote: true, class: "btn btn-danger" %>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+</div>
+
