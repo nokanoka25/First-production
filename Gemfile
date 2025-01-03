@@ -4,6 +4,7 @@ ruby "3.2.3"
 gem "sorcery"
 gem "redis"
 gem "sidekiq", require: "sidekiq/web"
+gem 'rails-i18n'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.0"

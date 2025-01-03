@@ -68,6 +68,12 @@
   align-items: center; /* 垂直方向に中央揃え */
 }
 
+.schedule-hr {
+  width: 100%; /* 線の長さを100%に設定 */
+  margin: 0 auto; /* 線を中央に配置 */
+  border: 1px solid #000000; /* 線の色と太さを設定 */
+}
+
 .group-index-row {
   height: 30px; /* 高さを指定 */
   align-items: center; /* 垂直方向に中央揃え */

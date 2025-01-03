@@ -1,15 +1,18 @@
-<h1>予定一覧</h1>
+<div class="text-center">
+  <h1>予定一覧</h1>
 
-<ul>
+
   <% @schedules.each do |schedule| %>
-    <li>
-      <strong><%= schedule.name %></strong> - 
-      <%= schedule.scheduled_at.strftime('%Y-%m-%d %H:%M') %>
-      <%= link_to '編集', edit_group_schedule_path(@group, schedule) %> |
-      <%= link_to '削除', group_schedule_path(@group, schedule), data: { turbo_method: :delete} %>
-    </li>
-    </li>
+    <div class="row custom-row">
+      <div class="col-md-3"><%= schedule.scheduled_at.strftime('%Y-%m-%d %H:%M') %></div>
+      <div class="col-md-3"><%= schedule.name %></div>
+      <div class="col-md-3">
+        <%= link_to '編集', edit_group_schedule_path(@group, schedule), class: "btn btn-success" %>
+        <%= link_to '削除', group_schedule_path(@group, schedule), data: { turbo_method: :delete}, class: "btn btn-danger" %>
+      </div>
+    </div>
+    <hr class="my-2 schedule-hr">
   <% end %>
-</ul>
 
-<%= link_to '新しい予定を作成', new_group_schedule_path(@group) %>
+  <%= link_to '新しい予定を作成', new_group_schedule_path(@group), class: "btn btn-primary me-2" %>
+</div>
