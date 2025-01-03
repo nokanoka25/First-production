@@ -18,6 +18,7 @@ module Myapp
     config.active_job.queue_adapter = :sidekiq
     config.time_zone = "Asia/Tokyo"
     config.active_record.default_timezone = :local
+    config.i18n.default_locale = :ja
 
     # Configuration for the application, engines, and railties goes here.
     #
