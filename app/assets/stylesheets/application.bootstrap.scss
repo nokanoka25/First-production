@@ -74,6 +74,17 @@
   border: 1px solid #000000; /* 線の色と太さを設定 */
 }
 
+.compact-form {
+  max-width: 400px; /* フォーム全体の最大幅を指定 */
+  margin: 0 auto; /* フォームを中央揃え */
+}
+
+.small-input {
+  width: 100%; /* 入力フィールドをフォーム幅に収める */
+  max-width: 300px; /* 入力フィールドの最大幅を調整 */
+  margin: 0 auto; /* 中央寄せ */
+}
+
 .group-index-row {
   height: 30px; /* 高さを指定 */
   align-items: center; /* 垂直方向に中央揃え */

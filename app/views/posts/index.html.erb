@@ -1,4 +1,5 @@
-<h2>投票結果</h2>
+<div class="text-center">
+<h2 class="title">投票結果</h2>
 
 <p>投票開始日時: <%= @group.voting_start_at&.strftime('%Y-%m-%d %H:%M') %></p>
 <p>投票終了日時: <%= @group.voting_end_at&.strftime('%Y-%m-%d %H:%M') %></p>
@@ -18,8 +19,9 @@
   <% end %>
 <% end %>
 <%= link_to '投票期間を設定', set_voting_period_group_path(@group), class: 'btn btn-primary' %>
+<hr class="my-2 schedule-hr">
 
-<h3>候補地一覧</h3>
+<h3 class="title">候補地一覧</h3>
 <% if @post.present? %>
   <% @post.each do |post| %>
     <p>キャンプ場名: <%= post.camp_site_name %></p>
@@ -35,10 +37,11 @@
       <!-- 未投票の場合 -->
       <%= button_to '投票する', group_post_votes_path(@group, post), method: :post, class: "btn btn-primary" %>
     <% end %>
-    <hr>
+    <hr class="my-2 schedule-hr">
   <% end %>
 <% else %>
   <p>候補地はまだありません。</p>
 <% end %>
 
 <%= link_to '登録', new_group_post_path(@group), class: "btn btn-success" %>
+</div>
