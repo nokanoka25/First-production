@@ -79,4 +79,6 @@ Rails.application.configure do
   config.web_console.whitelisted_ips = "192.168.65.0/24"
 
   config.log_level = :debug
+
+  config.hosts << "fac1-2400-4150-7840-c100-a101-3db-1208-af95.ngrok-free.app"
 end
