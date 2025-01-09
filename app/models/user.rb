@@ -17,4 +17,7 @@ class User < ApplicationRecord
 
   has_many :votes, dependent: :destroy
   has_many :my_gears
+
+  has_many :authentications, :dependent => :destroy
+  accepts_nested_attributes_for :authentications
 end
