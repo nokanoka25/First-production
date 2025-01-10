@@ -1,2 +1,0 @@
-sorcery:
-  line_callback_url: 'https://boiling-forest-06110-26ed33e0d459.herokuapp.com/oauth/callback?provider=line'

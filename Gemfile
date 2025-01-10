@@ -8,7 +8,7 @@ gem "rails-i18n"
 gem "omniauth-auth0"
 gem "omniauth-line"
 gem "omniauth-rails_csrf_protection"
-gem "config"
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.0"
