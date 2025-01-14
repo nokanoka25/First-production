@@ -4,7 +4,7 @@
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging,
 # :magic_login, :external
-Rails.application.config.sorcery.submodules = [:external]
+Rails.application.config.sorcery.submodules = [:external, :reset_password]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -403,7 +403,7 @@ Rails.application.config.sorcery.configure do |config|
     # Password reset mailer class.
     # Default: `nil`
     #
-    # user.reset_password_mailer =
+    
 
     # Reset password email method on your mailer class.
     # Default: `:reset_password_email`
@@ -491,7 +491,7 @@ Rails.application.config.sorcery.configure do |config|
     # Default: `50`
     #
     # user.consecutive_login_retries_amount_limit =
-
+    user.reset_password_mailer = UserMailer
     # How long the user should be banned, in seconds. 0 for permanent.
     # Default: `60 * 60`
     #

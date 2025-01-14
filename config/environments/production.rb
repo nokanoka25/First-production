@@ -94,4 +94,21 @@ Rails.application.configure do
 ]
 
 config.action_cable.worker_pool_size = 4
+
+config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    authentication: :plain,
+    enable_starttls_auto: true,
+    user_name: Rails.application.credentials.dig(:gmail, :username),
+    password: Rails.application.credentials.dig(:gmail, :password)
+  }
+
+  # メール内リンク用のホスト設定
+  config.action_mailer.default_url_options = {
+    host: Rails.env.production? ? 'https://boiling-forest-06110-26ed33e0d459.herokuapp.com/' : 'localhost',
+    protocol: Rails.env.production? ? 'https' : 'http'
+  }
 end
