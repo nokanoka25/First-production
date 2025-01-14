@@ -79,5 +79,6 @@ Rails.application.configure do
   config.web_console.whitelisted_ips = "192.168.65.0/24"
 
   config.log_level = :debug
-
+  config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.perform_deliveries = true
 end

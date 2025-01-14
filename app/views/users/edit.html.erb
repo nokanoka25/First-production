@@ -3,7 +3,7 @@
 </div>
 <div class="text-center">
   <%= form_with model: @user, url: user_path, method: :put do |f| %>
-    <div class="mb-3" style="max-width: 300px; margin: 0 auto;">
+    <div class="mb-3 " style="max-width: 300px; margin: 0 auto;">
       <%= f.label :名前 %>
       <%= f.text_field :name, class: "form-control" %>
     </div>
@@ -11,4 +11,5 @@
       <%= f.submit '変更する', class: "btn btn-primary btn-sm" %>
     </div>
   <% end %>
+  <%= link_to 'パスワード変更はこちら', password_resets_new_path, class: "btn btn-primary btn-sm mt-3 " %>
 </div>

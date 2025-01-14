@@ -5,12 +5,17 @@ Sidekiq::Web.use Rack::Auth::Basic do |username, password|
 end
 
 Rails.application.routes.draw do
+  get "password_resets/new"
+  get "password_resets/create"
+  get "password_resets/edit"
+  get "password_resets/update"
   mount Sidekiq::Web => "/sidekiq"
   root 'tops#index'
   get "rooms/show"
   resources :tops
   resources :users, only: %i[new create show edit update destroy]
   resources :gears, only: %i[new index create edit update destroy]
+  resources :password_resets, only: %i[new create edit update]
   resources :groups, only: %i[new create index show] do
     resources :informations, only: %i[new create index edit update]
     resources :my_gears, only: %i[index destroy]
@@ -39,6 +44,7 @@ Rails.application.routes.draw do
   post "oauth/callback", to: "oauths#callback"
   get "oauth/callback", to: "oauths#callback"
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
