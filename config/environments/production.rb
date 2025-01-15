@@ -102,8 +102,8 @@ config.action_mailer.delivery_method = :smtp
     domain: 'gmail.com',
     authentication: :plain,
     enable_starttls_auto: true,
-    user_name: Rails.application.credentials.dig(:gmail, :username),
-    password: Rails.application.credentials.dig(:gmail, :password)
+    user_name: ENV['SMTP_USERNAME'],
+    password: ENV['SMTP_PASSWORD']
   }
 
   # メール内リンク用のホスト設定
