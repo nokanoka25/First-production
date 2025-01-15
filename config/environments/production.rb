@@ -107,8 +107,5 @@ config.action_mailer.delivery_method = :smtp
   }
 
   # メール内リンク用のホスト設定
-  config.action_mailer.default_url_options = {
-    host: Rails.env.production? ? 'https://boiling-forest-06110-26ed33e0d459.herokuapp.com/' : 'localhost',
-    protocol: Rails.env.production? ? 'https' : 'http'
-  }
+  config.action_mailer.default_url_options = { host: 'boiling-forest-06110-26ed33e0d459.herokuapp.com', protocol: 'https' }
 end
