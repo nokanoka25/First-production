@@ -1,14 +1,24 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-.tops-index {
-  position: relative; // 背景を相対位置にする
+.tops-image {
   z-index: 1; // ヘッダーよりも低い値
   background-image: url('top_background.jpg'); /* 背景画像を指定 */
-  background-size: cover; /* 全体をカバー */
-  background-repeat: no-repeat; /* 繰り返しなし */
-  background-position: center center; /* 中央に配置 */
-  height: 100vh; // 背景が全画面に表示
+  background-size: cover; // 画像をカバー全体に適用
+  background-position: center; // 画像を中央配置
+  background-repeat: no-repeat; // 繰り返し防止
+  min-height: 100vh; // ビューポートの高さをカバー
+  display: flex;
+  flex-direction: column;
+  padding: 20px; // 余白を確保
+}
+
+.app-description {
+  font-family: 'Century', serif;
+  padding: 40px 20px; /* 上下に余白を追加 */
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: #fff; /* 背景色を白に設定 */
 }
 
 .chat-container {
