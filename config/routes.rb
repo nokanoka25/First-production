@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   root 'tops#index'
   get "rooms/show"
   resources :tops
+  resources :terms, only: %i[index]
+  resources :privacies, only: %i[index]
   resources :users, only: %i[new create show edit update destroy]
   resources :gears, only: %i[new index create edit update destroy]
   resources :password_resets, only: %i[new create edit update]
