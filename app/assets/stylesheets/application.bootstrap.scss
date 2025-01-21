@@ -192,3 +192,28 @@ footer {
     }
   }
 }
+
+.line-login-button {
+  display: inline-block;
+  width: 250px;  /* ボタンの幅を調整 */
+  height: 60px;  /* ボタンの高さを調整 */
+  text-decoration: none;
+}
+
+.line-login-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/line_login_base.png'); /* 初期画像 */
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease-in-out;
+}
+
+.line-login-button:hover .line-login-image {
+  background-image: url('/assets/line_login_hover.png'); /* ホバー時の画像 */
+}
+
+.line-login-button:active .line-login-image {
+  background-image: url('/assets/line_login_press.png'); /* クリック時の画像 */
+}
