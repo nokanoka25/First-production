@@ -41,6 +41,17 @@
   </head>
 
   <body>
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
     <body class="<%= controller_name %>-<%= action_name %>">
     <%= yield %>
   </body>
