@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to(:tops, notice: "ユーザー登録完了")
     else
-      render "new"
+      render :new, status: :unprocessable_entity
     end
   end
 
