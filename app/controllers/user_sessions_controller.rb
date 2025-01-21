@@ -7,8 +7,8 @@ class UserSessionsController < ApplicationController
       cookies.encrypted[:user_id] = { value: current_user.id, expires: 1.hour.from_now }
       redirect_to user_path(id: current_user), notice: "ログインに成功しました"
     else
-      flash.now[:alert] = "ログインに失敗しました"
-      render action: "new"
+      flash[:alert] = "ログインに失敗しました メールアドレス又はパスワードを確認してください"
+      render :new, status: :unprocessable_entity
     end
   end
 
