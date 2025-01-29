@@ -78,6 +78,11 @@
   align-items: center; /* 垂直方向に中央揃え */
 }
 
+.custom-map-row {
+  height: 200px; /* 高さを指定 */
+  align-items: center; /* 垂直方向に中央揃え */
+}
+
 .schedule-hr {
   width: 100%; /* 線の長さを100%に設定 */
   margin: 0 auto; /* 線を中央に配置 */
