@@ -16,10 +16,20 @@
 
     <hr class="my-2 custom-hr">
 
-    <div class="row custom-row">
-      <div class="col-md-6">キャンプ場住所</div>
-      <div class="col-md-6"><%= @information.camp_site_address %></div>
+    <div class="row custom-map-row">
+      <div class="col-md-6">
+        <div>キャンプ場住所</div>
+        <div><%= @information.camp_site_address %></div>
     </div>
+
+  <!-- Googleマップ -->
+  <div class="col-md-6">
+    <div id="map" 
+      data-latitude="<%= @information.latitude %>" 
+      data-longitude="<%= @information.longitude %>">
+    </div>
+  </div>
+</div>
 
     <hr class="my-2 custom-hr">
 
@@ -68,3 +78,47 @@
 <% else %>
   <p>関連する情報が登録されていません。</p>
 <% end %>
+<div class="map">
+  <div id="map" 
+    data-latitude="<%= @information.latitude %>" 
+    data-longitude="<%= @information.longitude %>">
+  </div>
+</div>
+
+<style>
+  #map {
+    width: 200px;
+    height: 200px;
+  }
+  @media (max-width: 768px) {
+    #map {
+      height: 300px;
+    }
+  }
+</style>
+
+<script>
+let map;
+let geocoder;
+
+function initMap() {
+  geocoder = new google.maps.Geocoder();
+
+  let latitude = parseFloat(document.getElementById('map').dataset.latitude);
+  let longitude = parseFloat(document.getElementById('map').dataset.longitude);
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: latitude, lng: longitude },
+    zoom: 12,
+    mapId: "16f4b8039d9f38fe"
+  });
+
+  marker = new google.maps.marker.AdvancedMarkerElement({
+    map: map,
+    position: { lat: latitude, lng: longitude }
+  });
+}
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google, :api_key) %>&callback=initMap&loading=async&libraries=marker" async defer></script>
