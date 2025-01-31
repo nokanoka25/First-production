@@ -1,11 +1,36 @@
 
 <% if @information.present? %>
   <div class="text-center">
-    <hr class="my-2 custom-hr">
-    <div class="row custom-row">
-      <div class="col-md-6">日程</div>
-      <div class="col-md-6"><%= "#{@information.start_day} ~ #{@information.finish_day}" %></div>
-    </div>
+  <hr class="my-2 custom-hr">
+  <div class="row custom-row">
+    <div class="col-md-6">日程</div>
+    <div class="col-md-6"><%= "#{@information.start_day} ~ #{@information.finish_day}" %></div>
+  </div>
+
+<!-- カレンダーを追加 -->
+  <div class="calendar-container">
+    <%= month_calendar(events: Array(@information), attribute: :start_day) do |date, informations| %>
+      <div class="day <%= 'special-day' if informations.any? { |info| info.start_day.to_date == date } %>">
+        <%= date.day %>
+
+        <% informations.each do |info| %>
+          <% if info.start_day.present? && date == info.start_day.to_date %>
+            <div class="event">
+              出発日
+            </div>
+          <% end %>
+        <% end %>
+
+        <% informations.each do |info| %>
+          <% if info.finish_day.present? && date == info.finish_day.to_date %>
+            <div class="event">
+              終了日
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
     <hr class="my-2 custom-hr">
 
