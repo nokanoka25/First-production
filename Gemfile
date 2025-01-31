@@ -10,7 +10,7 @@ gem "omniauth-line"
 gem "omniauth-rails_csrf_protection"
 gem "letter_opener_web"
 gem "meta-tags"
-gem "simple_calendar", "~> 2.0"
+gem "simple_calendar", "~> 2.4"
 gem "geocoder"
 gem "gmaps4rails"
 

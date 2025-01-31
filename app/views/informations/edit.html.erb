@@ -5,24 +5,14 @@
       <div class='mb-3'>
         <%= f.label :start_day, '出発日', class: 'form-label d-block' %> <!-- ラベルを中央揃え -->
         <div class="d-flex justify-content-center">
-        <%= f.select :start_day_year, (Date.today.year..(Date.today.year + 10)).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
-          <span class="mx-1">年</span>
-          <%= f.select :start_day_month, (1..12).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
-          <span class="mx-1">月</span>
-          <%= f.select :start_day_day, (1..31).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
-          <span class="mx-1">日</span>
+          <%= f.date_select :start_day, class: 'form-control', style: "max-width: 300px;" %>
         </div>
       </div>
     
       <div class='mb-3'>
         <%= f.label :finish_day, '終了日', class: 'form-label d-block' %>
         <div class="d-flex justify-content-center">
-        <%= f.select :start_day_year, (Date.today.year..(Date.today.year + 10)).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
-        <span class="mx-1">年</span>
-        <%= f.select :start_day_month, (1..12).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
-        <span class="mx-1">月</span>
-        <%= f.select :start_day_day, (1..31).to_a, {}, { class: "form-select form-select-sm d-inline-block", style: "width: auto;" } %>
-        <span class="mx-1">日</span>
+          <%= f.date_select :finish_day, class: 'form-control', style: "max-width: 300px;" %>
         </div>
       </div>
     

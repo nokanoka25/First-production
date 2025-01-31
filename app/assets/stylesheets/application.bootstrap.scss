@@ -1,6 +1,42 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
+/* カレンダー全体のサイズを調整 */
+.simple-calendar {
+  width: 50%; /* カレンダーの横幅を80%に */
+  max-width: 900px; /* 最大幅を900pxに */
+  margin: auto; /* 中央寄せ */
+  table-layout: fixed; /* 各セルの幅と高さを均一に */
+}
+
+/* カレンダーの各セル（td）の高さを調整 */
+.simple-calendar td {
+  height: 80px; /* セルの高さ */
+  width: 80px;
+  vertical-align: top; /* コンテンツを上に */
+}
+
+/* カレンダーのヘッダー（曜日部分）の調整 */
+.simple-calendar th {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* 今日の日付のセルを目立たせる */
+.simple-calendar .today {
+  background-color: #ffeb3b; /* 黄色で目立たせる */
+  font-weight: bold;
+}
+
+.special-day {
+  background-color: lightblue;
+  font-weight: bold;
+}
+
+
+
 .tops-image {
   z-index: 1; // ヘッダーよりも低い値
   background-image: url('top_background.jpg'); /* 背景画像を指定 */
