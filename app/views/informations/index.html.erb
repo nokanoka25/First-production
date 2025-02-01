@@ -1,36 +1,36 @@
 
 <% if @information.present? %>
   <div class="text-center">
-  <hr class="my-2 custom-hr">
-  <div class="row custom-row">
-    <div class="col-md-6">日程</div>
-    <div class="col-md-6"><%= "#{@information.start_day} ~ #{@information.finish_day}" %></div>
-  </div>
+    <hr class="my-2 custom-hr">
+    <div class="row custom-row">
+      <div class="col-md-6">日程</div>
+      <div class="col-md-6"><%= "#{@information.start_day} ~ #{@information.finish_day}" %></div>
+    </div>
 
 <!-- カレンダーを追加 -->
-  <div class="calendar-container">
-    <%= month_calendar(events: Array(@information), attribute: :start_day) do |date, informations| %>
-      <div class="day <%= 'special-day' if informations.any? { |info| info.start_day.to_date == date } %>">
-        <%= date.day %>
+    <div class="calendar-container">
+      <%= month_calendar(events: Array(@information), attribute: :start_day) do |date, informations| %>
+        <div class="day <%= 'special-day' if informations.any? { |info| info.start_day.to_date == date } %>">
+          <%= date.day %>
 
-        <% informations.each do |info| %>
-          <% if info.start_day.present? && date == info.start_day.to_date %>
-            <div class="event">
-              出発日
-            </div>
+          <% informations.each do |info| %>
+            <% if info.start_day.present? && date == info.start_day.to_date %>
+              <div class="event">
+                出発日
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
 
-        <% informations.each do |info| %>
-          <% if info.finish_day.present? && date == info.finish_day.to_date %>
-            <div class="event">
-              終了日
-            </div>
+          <% informations.each do |info| %>
+            <% if info.finish_day.present? && date == info.finish_day.to_date %>
+              <div class="event">
+                終了日
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+        </div>
+      <% end %>
+    </div>
 
     <hr class="my-2 custom-hr">
 
@@ -45,16 +45,16 @@
       <div class="col-md-6">
         <div>キャンプ場住所</div>
         <div><%= @information.camp_site_address %></div>
-    </div>
+      </div>
 
-  <!-- Googleマップ -->
-  <div class="col-md-6">
-    <div id="map" 
-      data-latitude="<%= @information.latitude %>" 
-      data-longitude="<%= @information.longitude %>">
+      <!-- Googleマップ -->
+      <div class="col-md-6">
+        <div id="map" 
+          data-latitude="<%= @information.latitude %>" 
+          data-longitude="<%= @information.longitude %>">
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
     <hr class="my-2 custom-hr">
 
@@ -103,12 +103,7 @@
 <% else %>
   <p>関連する情報が登録されていません。</p>
 <% end %>
-<div class="map">
-  <div id="map" 
-    data-latitude="<%= @information.latitude %>" 
-    data-longitude="<%= @information.longitude %>">
-  </div>
-</div>
+
 
 <style>
   #map {
