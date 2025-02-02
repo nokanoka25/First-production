@@ -28,5 +28,5 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :authentications
 
   validates :reset_password_token, uniqueness: true, allow_nil: true
-
+  
 end

@@ -1,24 +1,24 @@
 <div class="text-center">
 <h2 class="title">投票結果</h2>
 
-<p>投票開始日時: <%= @group.voting_start_at&.strftime('%Y-%m-%d %H:%M') %></p>
-<p>投票終了日時: <%= @group.voting_end_at&.strftime('%Y-%m-%d %H:%M') %></p>
 
-<% if @top_voted_post.present? %>
-  <p>最も投票数が多かった候補地:</p>
-  <p>キャンプ場名: <%= @top_voted_post.camp_site_name %></p>
-  <p>候補地住所: <%= @top_voted_post.camp_site_address %></p>
-  <p>候補地URL: <%= @top_voted_post.camp_site_url %></p>
-  <p>アピールポイント: <%= @top_voted_post.text %></p>
-  <p>投票数: <%= @top_voted_post.votes.count %></p>
+<% if @top_voted_posts.any? %>
+  <p>最も投票数が多かった候補地（<%= @top_voted_posts.first.votes.count %> 票）:</p>
+  <ul>
+    <% @top_voted_posts.each do |post| %>
+      <li>
+        <p>キャンプ場名: <%= post.camp_site_name %></p>
+        <p>候補地住所: <%= post.camp_site_address %></p>
+        <p>候補地URL: <%= post.camp_site_url %></p>
+        <p>アピールポイント: <%= post.text %></p>
+        <p>投票数: <%= post.votes.count %></p>
+      </li>
+      <hr>
+    <% end %>
+  </ul>
 <% else %>
-  <% if @group.voting_active? %>
-    <p>投票期間中です。結果は投票終了後に表示されます。</p>
-  <% else %>
-    <p>投票期間が設定されていません。</p>
-  <% end %>
+  <p>まだ投票がありません。</p>
 <% end %>
-<%= link_to '投票期間を設定', set_voting_period_group_path(@group), class: 'btn btn-primary' %>
 <hr class="my-2 schedule-hr">
 
 <h3 class="title">候補地一覧</h3>
