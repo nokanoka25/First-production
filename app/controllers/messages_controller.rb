@@ -7,10 +7,10 @@ class MessagesController < ApplicationController
     @message.user = current_user
 
     if @message.save
-      redirect_to group_path(@group), notice: "Message sent!"
+      redirect_to group_path(@group), notice: "メッセージを投稿しました"
     else
       Rails.logger.error(@message.errors.full_messages)
-      flash[:alert] = "Message cannot be empty"
+      flash[:alert] = "メッセージを入力してください"
       redirect_to group_path(@group)
     end
   end
