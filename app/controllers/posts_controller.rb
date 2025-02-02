@@ -25,10 +25,9 @@ class PostsController < ApplicationController
     end
 
     def create
-      @post = Post.new(post_params)
-      @post.group_id = params[:group_id]
+      @post = @group.posts.new(post_params) # set_group を利用して @group を使う
       if @post.save
-        redirect_to group_path(@post.group_id), notice: "候補を投稿しました"
+        redirect_to @group, notice: "候補を投稿しました"
       else
         Rails.logger.error(@post.errors.full_messages)
         render "new"
