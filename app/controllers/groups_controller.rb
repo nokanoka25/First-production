@@ -43,6 +43,21 @@ class GroupsController < ApplicationController
     @total_area = Gear.joins(users: :users_groups)
                       .where(users_groups: { group_id: @group.id }, gear_type: [ "タープ", "テント" ])
                       .sum("gears.length * gears.width")
+    @posts = @group.posts.includes(:votes)  # 投稿一覧を取得（N+1対策）
+
+                      # ① 投票数が最も多い投稿の投票数を取得
+    top_vote_count = @posts.left_joins(:votes)
+                     .group(:id)
+                     .order('COUNT(votes.id) DESC')
+                     .limit(1)
+                     .pluck('COUNT(votes.id)')
+                     .first || 0  # 投票がない場合は0を設定
+                
+                      # ② 同じ投票数を持つ投稿をすべて取得
+    @top_voted_posts = @posts.left_joins(:votes)
+                       .group(:id)
+                       .having('COUNT(votes.id) = ?', top_vote_count)
+                       .order('camp_site_name ASC') # 名前順にソート
   end
 
   def set_voting_period
