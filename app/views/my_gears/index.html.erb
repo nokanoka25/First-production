@@ -1,38 +1,33 @@
-
-<p>MyGears Count: <%= @group_my_gears.count %></p>
-
-
 <div class="text-center">
-  <% @group_my_gears.each do |users_gear| %>
+  <h2>Mygears</h2>
+
+  <%= form_with url: group_my_gears_path(@group), method: :post do %>
+    <%= select_tag :gear_id, options_from_collection_for_select(@available_gears, :id, :name)%>
+    <%= submit_tag "追加" %>
+  <% end %>
+
+
+  <% @mygears.each do |mygear| %>
     <hr class="my-2 custom-hr">
     <div class="row">
-      <div class="col-md-6">ギア名</div>
-      <div class="col-md-6"><%= users_gear.gear.name %></div>
-    </div>
-    
-    <div class="row">
-      <div class="col-md-6">所有者</div>
-      <div class="col-md-6"><%= users_gear.user.name %></div>
+      <div class="col-md-6">種類</div>
+      <div class="col-md-6"><%= mygear.gear.gear_type %></div>
     </div>
 
     <div class="row">
-      <div class="col-md-6">種類</div>
-      <div class="col-md-6"><%= users_gear.gear.gear_type %></div>
+      <div class="col-md-6">ギア名</div>
+      <div class="col-md-6"><%= mygear.gear.name %></div>
     </div>
 
     <div class="row">
       <div class="col-md-6">縦</div>
-      <div class="col-md-6"><%= users_gear.gear.length %></div>
+      <div class="col-md-6"><%= mygear.gear.length %></div>
     </div>
 
     <div class="row">
       <div class="col-md-6">横</div>
-      <div class="col-md-6"><%= users_gear.gear.width %></div>
+      <div class="col-md-6"><%= mygear.gear.width %></div>
     </div>
-
-    <% if users_gear.user == current_user %>
-      <%= link_to '削除', group_my_gear_path(@group, users_gear.gear_id), data: { turbo_method: :delete}, remote: true, class: "btn btn-danger" %>
-    <% end %>
+    <%= link_to "削除", group_my_gear_path(@group, mygear), data: { turbo_method: :delete }, class: 'btn btn-danger btn-sm' %>
   <% end %>
 </div>
-
