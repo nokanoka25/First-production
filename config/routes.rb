@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i[new create edit update]
   resources :groups, only: %i[new create index show] do
     resources :informations, only: %i[new create index edit update]
-    resources :my_gears, only: %i[index destroy]
+    resources :my_gears, only: %i[index destroy create]
     resources :schedules, only: %i[index new create edit update destroy ]
     resources :messages, only: %i[create]
     resources :posts, only: %i[new index create] do
@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   get "oauth/callback", to: "oauths#callback"
   get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+  delete "my_gears/:id" => "my_gears#destroy"
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

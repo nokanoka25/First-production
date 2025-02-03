@@ -26,6 +26,9 @@ class GroupsController < ApplicationController
     @post = @group.posts
     @top_voted_post = @group.top_voted_post
     @schedules = @group.schedules.order(scheduled_at: :asc) # 日時順に並べる
+    @mygears = @group.my_gears.where(user: current_user).includes(:gear)
+    mygear_gear_ids = @mygears.pluck(:gear_id) # すでにMygearに登録済みのGear ID
+    @available_gears = current_user.gears.where.not(id: mygear_gear_ids) # 未登録のGear
     @events = Array(@information).flat_map do |info|
       (info.start_day.to_date..info.finish_day.to_date).map do |date|
         OpenStruct.new(start_time: date, info: info)
@@ -36,9 +39,7 @@ class GroupsController < ApplicationController
     @group_my_gears = MyGear.includes(:gear, :user).where(group: @group)
 
     # その他データ取得
-    @gears = Gear.joins(users: :users_groups)
-                 .where(users_groups: { group_id: @group.id })
-                 .distinct
+    @all_gears = @group.my_gears.includes(:gear, :user)
 
     @total_area = Gear.joins(users: :users_groups)
                       .where(users_groups: { group_id: @group.id }, gear_type: [ "タープ", "テント" ])

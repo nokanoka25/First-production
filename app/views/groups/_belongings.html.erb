@@ -1,25 +1,27 @@
 <div class="text-center">
-  <h2>タープとテントの総設置面積</h2>
-  <p><%= @total_area %> m²</p>
-</div>
-  <div class="text-center">
-    <% @gears.each do |gear| %>
-      <hr class="my-2 custom-hr">
+  <h2>グループの持ち物一覧</h2>
+
+  
+  <% @all_gears.each do |mygear| %>
+    <hr class="my-2 custom-hr">
       <div class="row">
         <div class="col-md-6">ギアの種類</div>
-        <div class="col-md-6"><%= gear.gear_type %></div>
+        <div class="col-md-6"><%= mygear.gear.gear_type %></div>
       </div>
+
       <div class="row">
         <div class="col-md-6">ギアの名前</div>
-        <div class="col-md-6"><%= gear.name %></div>
+        <div class="col-md-6"><%= mygear.gear.name %></div>
       </div>
+      
       <div class="row">
         <div class="col-md-6">所有者</div>
-        <div class="col-md-6"><%= gear.users.map(&:name).join(", ") %></div>
+        <div class="col-md-6"><%= mygear.user.name %></div>
       </div>
+
       <div class="row">
-        <div class="col-md-6">サイズ (m²)</div>
-        <div class="col-md-6"><%= gear.length * gear.width %></div>
+        <div class="col-md-6">サイズ (cm²)</div>
+        <div class="col-md-6"><%= mygear.gear.length * mygear.gear.width %></div>
       </div>
-    <% end %>
-  </div>
+  <% end %>
+</div>
