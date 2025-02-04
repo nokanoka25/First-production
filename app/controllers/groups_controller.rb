@@ -29,11 +29,6 @@ class GroupsController < ApplicationController
     @mygears = @group.my_gears.where(user: current_user).includes(:gear)
     mygear_gear_ids = @mygears.pluck(:gear_id) # すでにMygearに登録済みのGear ID
     @available_gears = current_user.gears.where.not(id: mygear_gear_ids) # 未登録のGear
-    @events = Array(@information).flat_map do |info|
-      (info.start_day.to_date..info.finish_day.to_date).map do |date|
-        OpenStruct.new(start_time: date, info: info)
-      end
-    end
 
     # グループ全体の MyGear を取得
     @group_my_gears = MyGear.includes(:gear, :user).where(group: @group)
