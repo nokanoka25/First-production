@@ -74,14 +74,14 @@
 
     <div class="row custom-row">
       <div class="col-md-6">チェックイン</div>
-      <div class="col-md-6"><%= @information.check_in %></div>
+      <div class="col-md-6"><%= @information.check_in.strftime("%Y-%m-%d %H:%M:%S") %></div>
     </div>
 
     <hr class="my-2 custom-hr">
 
     <div class="row custom-row">
       <div class="col-md-6">チェックアウト</div>
-      <div class="col-md-6"><%= @information.check_out %></div>
+      <div class="col-md-6"><%= @information.check_out.strftime("%Y-%m-%d %H:%M:%S") %></div>
     </div>
 
     <hr class="my-2 custom-hr">

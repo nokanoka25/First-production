@@ -16,7 +16,7 @@ module Myapp
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
     config.active_job.queue_adapter = :sidekiq
-    config.time_zone = "Asia/Tokyo"
+  
     config.active_record.default_timezone = :local
     config.i18n.default_locale = :ja
     config.google_api_key = Rails.application.credentials.dig(:google, :api_key)
