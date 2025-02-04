@@ -20,14 +20,6 @@
               </div>
             <% end %>
           <% end %>
-
-          <% informations.each do |info| %>
-            <% if info.finish_day.present? && date == info.finish_day.to_date %>
-              <div class="event">
-                終了日
-              </div>
-            <% end %>
-          <% end %>
         </div>
       <% end %>
     </div>
