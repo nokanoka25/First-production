@@ -221,7 +221,7 @@ Rails.application.config.sorcery.configure do |config|
 
   config.line.key = Rails.application.credentials.dig(:line, :channel_id)
   config.line.secret = Rails.application.credentials.dig(:line, :channel_secret)
-  config.line.callback_url =  "https://boiling-forest-06110-26ed33e0d459.herokuapp.com/oauth/callback?provider=line"
+  config.line.callback_url =  "https://www.camplan.xyz/oauth/callback?provider=line"
   config.line.scope = 'profile'
   config.line.user_info_mapping = {name: 'displayName', email: 'userId'}
   # config.line.bot_prompt = "normal"
