@@ -44,10 +44,8 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_started
+      - db
+      - chrome
 
   worker:
     build: 
@@ -63,9 +61,9 @@ services:
       DATABASE_URL: mysql2://ad31j2tua6753k3m:rrb4x3uv54fzxda3@e11wl4mksauxgu1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/oog78eshaqb6ybdk
       REDIS_URL: redis://redis:6379/0
       SECRET_KEY_BASE: ab1d03af2bd3d9bdbf817c89f437b804c5a340cdcc4855d0e2b1626ed3fd6ba8971af5b4f15af7babfe73354f51ab4be7d4181ed0e7312cfa1e90e5c23d0540a
-  
+      SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub
   chrome:
-    image: seleniarm/standalone-chromium:latest
+    image: selenium/standalone-chrome-debug:latest
     ports:
       - 4444:4444
 
