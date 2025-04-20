@@ -50,8 +50,20 @@ https://github.com/user-attachments/assets/9e3f0bc7-3281-4406-9100-9c21054e70f7
 Mygearsからキャンプギアを選定します。リストはマイページのキャンプギアに登録したものから選択できます。
 Mygearsに登録したものは持ち物一覧で共有されます。
 
-## 画面遷移図 
+## 技術構成
+
+| カテゴリ  | 技術|
+| ------------- | ------------- |
+| バックエンド  | Ruby 3.2.3 / Ruby on Rails 8.0.0  |
+| フロントエンド  | HTML・Bootstrap  |
+| データベース  | MySQL 8.0  |
+|  環境構築 | Docker  |
+| インフラ  | Heroku  |
+| Web API  | LINE API・Google API  |
+| バージョン管理ツール  | GitHub  |
+
+### 画面遷移図 
 Figma：https://www.figma.com/design/D20fnYzweSKw3OZijDRLn2/Camplan-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&node-type=canvas&t=7CeuCRKE9tRxBiIe-0
 
-## ER図 
+### ER図 
 drawio:https://app.diagrams.net/#G1KjVe_YxvBydcmaNCIEBmynpB9-EmH7Ba#%7B%22pageId%22%3A%22Ws8fdge7SCt0M14triZR%22%7D
