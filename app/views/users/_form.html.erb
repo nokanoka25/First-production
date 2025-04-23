@@ -22,8 +22,14 @@
 
     <div class="field">
       <%= f.label :パスワード %><br />
-      <%= f.password_field :password %>
+        <small class="form-text text-muted">
+          ※ パスワードは8~20文字、英字と数字を含めてください。<br />
+        </small>
+      
+        <%= f.password_field :password %>
     </div>
+
+    
 
     <div class="field">
       <%= f.label :パスワード確認 %><br />
