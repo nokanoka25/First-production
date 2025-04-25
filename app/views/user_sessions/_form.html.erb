@@ -16,5 +16,8 @@
     <div class="actions">
       <%= f.submit "Login", class: "btn btn-primary" %>
     </div>
+    <%= link_to auth_at_provider_path(:provider => :line) do %><br />
+      <%= image_tag 'line_login_base.png' %>
+    <% end %>
   <% end %>
 </div>

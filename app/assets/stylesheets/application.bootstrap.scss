@@ -49,6 +49,10 @@
   padding: 20px; // 余白を確保
 }
 
+.line-image{
+  background-image: url('line_login_base.png'); /* 背景画像を指定 */
+}
+
 .app-description {
   font-family: 'Century', serif;
   padding: 40px 20px; /* 上下に余白を追加 */
