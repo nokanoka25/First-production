@@ -1,4 +1,19 @@
 <div class="container text-center title">
   <h3>以下のトークンをマイページのグループから入力するとグループに参加できます</h3>
-  <h2 style="margin-top: 40px;">グループ招待トークン: <%= @group.token %></h2>
+
+  <!-- 表示用 -->
+  <h2 style="margin-top: 40px;">グループ招待トークン: <span id="group-token"><%= @group.token %></span></h2>
+
+  <!-- クリップボード用（ボタンだけStimulus対象） -->
+  <div data-controller="clipboard">
+    <!-- コピー対象 -->
+    <div data-clipboard-target="source" style="display: none;">
+      <%= @group.token %>
+    </div>
+
+    <!-- コピーするボタン -->
+    <button data-action="click->clipboard#copy">
+      コピーする
+    </button>
+  </div>
 </div>
