@@ -2,8 +2,6 @@ source "https://rubygems.org"
 
 ruby "3.2.3"
 gem "sorcery"
-gem "redis"
-gem "sidekiq", require: "sidekiq/web"
 gem "rails-i18n"
 gem "omniauth-auth0"
 gem "omniauth-line"
